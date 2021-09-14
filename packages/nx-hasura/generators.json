@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-hasura",
+  "version": "0.0.1",
+  "generators": {
+    "nx-hasura": {
+      "factory": "./src/generators/nx-hasura/generator",
+      "schema": "./src/generators/nx-hasura/schema.json",
+      "description": "nx-hasura generator"
+    }
+  }
+}

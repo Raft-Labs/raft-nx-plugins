@@ -1,0 +1,77 @@
+{
+  "version": 2,
+  "projects": {
+    "nx-hasura": {
+      "root": "packages/nx-hasura",
+      "sourceRoot": "packages/nx-hasura/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/nx-hasura/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-hasura"],
+          "options": {
+            "jestConfig": "packages/nx-hasura/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-hasura",
+            "tsConfig": "packages/nx-hasura/tsconfig.lib.json",
+            "packageJson": "packages/nx-hasura/package.json",
+            "main": "packages/nx-hasura/src/index.ts",
+            "assets": [
+              "packages/nx-hasura/*.md",
+              {
+                "input": "./packages/nx-hasura/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-hasura/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-hasura",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-hasura",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-hasura-e2e": {
+      "root": "e2e/nx-hasura-e2e",
+      "projectType": "application",
+      "sourceRoot": "e2e/nx-hasura-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-hasura:build",
+            "jestConfig": "e2e/nx-hasura-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}
