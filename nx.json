@@ -1,7 +1,7 @@
 {
   "npmScope": "raftlabs",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "package.json": {
@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "devkit-extra": {
+      "tags": []
+    },
     "nx-hasura": {
       "tags": []
     },

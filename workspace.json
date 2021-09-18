@@ -1,6 +1,39 @@
 {
   "version": 2,
   "projects": {
+    "devkit-extra": {
+      "root": "packages/devkit-extra",
+      "sourceRoot": "packages/devkit-extra/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/devkit-extra/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/devkit-extra"],
+          "options": {
+            "jestConfig": "packages/devkit-extra/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/devkit-extra",
+            "tsConfig": "packages/devkit-extra/tsconfig.lib.json",
+            "packageJson": "packages/devkit-extra/package.json",
+            "main": "packages/devkit-extra/src/index.ts",
+            "assets": ["packages/devkit-extra/*.md"]
+          }
+        }
+      }
+    },
     "nx-hasura": {
       "root": "packages/nx-hasura",
       "sourceRoot": "packages/nx-hasura/src",

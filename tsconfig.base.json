@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@raftlabs/devkit-extra": ["packages/devkit-extra/src/index.ts"],
       "raftlabs/nx-hasura": ["packages/nx-hasura/src/index.ts"]
     }
   },

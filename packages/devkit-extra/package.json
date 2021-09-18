@@ -1,0 +1,20 @@
+{
+  "name": "@raftlabs/devkit-extra",
+  "version": "0.0.2",
+  "keywords": [
+    "nx",
+    "devkit",
+    "devkit-extra"
+  ],
+  "author": "Amal Chandran",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raft-Labs/raft-nx-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Raft-Labs/raft-nx-plugins/issues"
+  },
+  "homepage": "https://github.com/Raft-Labs/raft-nx-plugins#readme",
+  "description": ""
+}

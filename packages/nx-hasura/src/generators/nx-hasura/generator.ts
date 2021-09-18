@@ -8,8 +8,8 @@ import {
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
+import { updateWorkspaceLayoutExtra } from '../../devkit-extra';
 import { NxHasuraGeneratorSchema } from './schema';
-
 interface NormalizedSchema extends NxHasuraGeneratorSchema {
   projectName: string;
   projectRoot: string;
@@ -56,10 +56,13 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 }
 
 export default async function (tree: Tree, options: NxHasuraGeneratorSchema) {
+  updateWorkspaceLayoutExtra(tree);
+
   const normalizedOptions = normalizeOptions(tree, options);
+
   addProjectConfiguration(tree, normalizedOptions.projectName, {
     root: normalizedOptions.projectRoot,
-    projectType: 'library',
+    projectType: 'application',
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
     targets: {
       build: {
