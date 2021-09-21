@@ -34,6 +34,47 @@
         }
       }
     },
+    "firebase-react": {
+      "root": "packages/firebase-react",
+      "sourceRoot": "packages/firebase-react/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/firebase-react",
+            "tsConfig": "packages/firebase-react/tsconfig.lib.json",
+            "project": "packages/firebase-react/package.json",
+            "entryFile": "packages/firebase-react/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "packages/firebase-react/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/firebase-react/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/firebase-react"],
+          "options": {
+            "jestConfig": "packages/firebase-react/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "nx-hasura": {
       "root": "packages/nx-hasura",
       "sourceRoot": "packages/nx-hasura/src",
@@ -105,6 +146,13 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    }
   }
 }

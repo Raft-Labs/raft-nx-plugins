@@ -30,6 +30,9 @@
     "devkit-extra": {
       "tags": []
     },
+    "firebase-react": {
+      "tags": []
+    },
     "nx-hasura": {
       "tags": []
     },
