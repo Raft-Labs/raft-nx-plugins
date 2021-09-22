@@ -20,9 +20,9 @@ export const AuthProvider: FC<{ app: FirebaseApp }> = ({ children, app }) => {
       }
     });
     return unsubscribe;
-  }, [auth]);
+  }, [auth, app]);
 
-  const value = { user, setUser, signedIn };
+  const value = { user, setUser, signedIn, auth };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
