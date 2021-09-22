@@ -1,4 +1,4 @@
-# firebase-react
+# @raftlabs/firebase-react
 
 Connect firebase with react and have user data in React Context.
 
