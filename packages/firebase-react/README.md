@@ -2,13 +2,13 @@
 
 Connect firebase with react and have user data in React Context.
 
-Create a helper file and generate firebase app and auth
+Create a helper file and initialize firebase app
 
 ```js
-import { createFirebaseClient } from '@raftlabs/firebase-react';
+import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config';
 
-export const { app, auth } = createFirebaseClient(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 ```
 
 Once the app is configured wrap the app with The AuthProvider and pass firebase app as prop.
@@ -30,5 +30,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
 export default App;
 ```
+
+You will be able to get user, auth, signedIn from `useAuth()` hook.
 
 This library was generated with [Nx](https://nx.dev).
