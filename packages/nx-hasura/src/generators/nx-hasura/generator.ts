@@ -1,14 +1,17 @@
 import {
+  addDependenciesToPackageJson,
   addProjectConfiguration,
   formatFiles,
   generateFiles,
-  getWorkspaceLayout,
   names,
   offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
-import { updateWorkspaceLayoutExtra } from '../../devkit-extra';
+import {
+  getWorkspaceLayoutExtra,
+  updateWorkspaceLayoutExtra,
+} from '../../devkit-extra';
 import { NxHasuraGeneratorSchema } from './schema';
 interface NormalizedSchema extends NxHasuraGeneratorSchema {
   projectName: string;
@@ -26,7 +29,9 @@ function normalizeOptions(
     ? `${names(options.directory).fileName}/${name}`
     : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
+  const projectRoot = `${
+    getWorkspaceLayoutExtra(tree).servicesDir
+  }/${projectDirectory}`;
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
     : [];
@@ -49,7 +54,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   };
   generateFiles(
     tree,
-    path.join(__dirname, 'files'),
+    path.join(__dirname, 'files', 'hasura-v3'),
     options.projectRoot,
     templateOptions
   );
@@ -58,12 +63,14 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 export default async function (tree: Tree, options: NxHasuraGeneratorSchema) {
   updateWorkspaceLayoutExtra(tree);
 
+  addDependenciesToPackageJson(tree, {}, { 'hasura-cli': 'latest' });
+
   const normalizedOptions = normalizeOptions(tree, options);
 
   addProjectConfiguration(tree, normalizedOptions.projectName, {
     root: normalizedOptions.projectRoot,
     projectType: 'application',
-    sourceRoot: `${normalizedOptions.projectRoot}/src`,
+    sourceRoot: `${normalizedOptions.projectRoot}`,
     targets: {
       build: {
         executor: '@raftlabs/nx-hasura:build',
@@ -71,6 +78,8 @@ export default async function (tree: Tree, options: NxHasuraGeneratorSchema) {
     },
     tags: normalizedOptions.parsedTags,
   });
+
   addFiles(tree, normalizedOptions);
+
   await formatFiles(tree);
 }

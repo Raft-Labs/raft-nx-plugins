@@ -10,12 +10,13 @@
   "private": true,
   "dependencies": {
     "fs-extra": "^10.0.0",
+    "hasura-cli": "^2.0.8",
     "lodash": "^4.17.21",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@nrwl/devkit": "12.9.0"
   },
   "devDependencies": {
     "@nrwl/cli": "12.9.0",
-    "@nrwl/devkit": "12.9.0",
     "@nrwl/eslint-plugin-nx": "12.9.0",
     "@nrwl/jest": "12.9.0",
     "@nrwl/linter": "12.9.0",
