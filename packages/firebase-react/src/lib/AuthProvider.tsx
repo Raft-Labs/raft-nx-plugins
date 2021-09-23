@@ -6,7 +6,7 @@ import { AuthContext } from './AuthContext';
 export const AuthProvider: FC<{ app: FirebaseApp }> = ({ children, app }) => {
   const [user, setUser] = useState<User>();
   const [signedIn, setSignedIn] = useState(false);
-  const [auth, setAuth] = useState<Auth>();
+  const [auth, setAuth] = useState(getAuth(app));
 
   useEffect(() => {
     setAuth(getAuth(app));
