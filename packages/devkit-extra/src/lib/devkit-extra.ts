@@ -3,7 +3,7 @@ import * as fs from 'fs-extra';
 import { defaultsDeep, get, values } from 'lodash';
 import * as path from 'path';
 
-type WorkspaceLayout = ReturnType<typeof getWorkspaceLayout>;
+export type WorkspaceLayout = ReturnType<typeof getWorkspaceLayout>;
 
 interface WorkspaceLayoutExtra extends WorkspaceLayout {
   servicesDir: string;
@@ -20,7 +20,7 @@ export function getWorkspaceLayoutExtra(tree: Tree): WorkspaceLayoutExtra {
   };
 }
 
-interface InputUpdateWorkspaceLayoutExtra {
+export interface InputUpdateWorkspaceLayoutExtra {
   appsDir?: string;
   libsDir?: string;
   servicesDir?: string;
