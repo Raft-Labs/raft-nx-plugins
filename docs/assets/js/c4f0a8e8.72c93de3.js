@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkraftlabs=self.webpackChunkraftlabs||[]).push([[604],{7833:l=>{l.exports=JSON.parse('{"allTagsPath":"/raft-nx-plugins/blog/tags","slug":"/raft-nx-plugins/blog/tags/hello","name":"hello","count":2,"permalink":"/raft-nx-plugins/blog/tags/hello"}')}}]);

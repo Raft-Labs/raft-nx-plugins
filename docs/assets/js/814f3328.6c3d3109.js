@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkraftlabs=self.webpackChunkraftlabs||[]).push([[535],{1848:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/blog/welcome"},{"title":"Hello","permalink":"/blog/hello-world"},{"title":"Hola","permalink":"/blog/hola"}]}')}}]);

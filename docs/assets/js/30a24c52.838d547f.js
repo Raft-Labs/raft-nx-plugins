@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkraftlabs=self.webpackChunkraftlabs||[]).push([[453],{8521:l=>{l.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/hello","name":"hello","count":2,"permalink":"/blog/tags/hello"}')}}]);
