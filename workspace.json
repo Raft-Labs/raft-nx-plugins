@@ -8,20 +8,14 @@
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "packages/devkit-extra/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/devkit-extra/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/devkit-extra"
-          ],
+          "outputs": ["coverage/packages/devkit-extra"],
           "options": {
             "jestConfig": "packages/devkit-extra/jest.config.js",
             "passWithNoTests": true
@@ -29,17 +23,13 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/devkit-extra",
             "tsConfig": "packages/devkit-extra/tsconfig.lib.json",
             "packageJson": "packages/devkit-extra/package.json",
             "main": "packages/devkit-extra/src/index.ts",
-            "assets": [
-              "packages/devkit-extra/*.md"
-            ]
+            "assets": ["packages/devkit-extra/*.md"]
           }
         }
       }
@@ -51,17 +41,13 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/firebase-react",
             "tsConfig": "packages/firebase-react/tsconfig.lib.json",
             "project": "packages/firebase-react/package.json",
             "entryFile": "packages/firebase-react/src/index.ts",
-            "external": [
-              "react/jsx-runtime"
-            ],
+            "external": ["react/jsx-runtime"],
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
               {
@@ -74,20 +60,14 @@
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "packages/firebase-react/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["packages/firebase-react/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/firebase-react"
-          ],
+          "outputs": ["coverage/packages/firebase-react"],
           "options": {
             "jestConfig": "packages/firebase-react/jest.config.js",
             "passWithNoTests": true
@@ -102,20 +82,14 @@
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "packages/nx-hasura/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/nx-hasura/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-hasura"
-          ],
+          "outputs": ["coverage/packages/nx-hasura"],
           "options": {
             "jestConfig": "packages/nx-hasura/jest.config.js",
             "passWithNoTests": true
@@ -123,9 +97,7 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/nx-hasura",
             "tsConfig": "packages/nx-hasura/tsconfig.lib.json",
@@ -159,28 +131,28 @@
       }
     },
     "nx-hasura-e2e": {
-      "root": "e2e/nx-hasura-e2e",
+      "root": "apps/nx-hasura-e2e",
       "projectType": "application",
-      "sourceRoot": "e2e/nx-hasura-e2e/src",
+      "sourceRoot": "apps/nx-hasura-e2e/src",
       "targets": {
         "e2e": {
           "executor": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "nx-hasura:build",
-            "jestConfig": "e2e/nx-hasura-e2e/jest.config.js"
+            "jestConfig": "apps/nx-hasura-e2e/jest.config.js"
           }
         }
       }
     },
     "docs": {
       "projectType": "application",
-      "root": "e2e/docs",
-      "sourceRoot": "e2e/docs/src",
+      "root": "apps/docs",
+      "sourceRoot": "apps/docs/src",
       "targets": {
         "build": {
           "executor": "@nx-plus/docusaurus:browser",
           "options": {
-            "outputPath": "dist/e2e/docs"
+            "outputPath": "dist/apps/docs"
           }
         },
         "serve": {
