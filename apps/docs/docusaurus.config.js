@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Raftlabs Open Source',
   tagline: 'Developer life made simple',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://raft-labs.github.io',
+  baseUrl: '/raft-nx-plugins/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/raftlabs-logo.png',
