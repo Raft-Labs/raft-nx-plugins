@@ -5,12 +5,14 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "clean-cache": "rimraf node_modules/.cache/nx",
+    "clean": "rimraf node_modules/.cache/nx node_modules dist"
   },
   "private": true,
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.70",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.70",
+    "@docusaurus/core": "2.0.0-beta.6",
+    "@docusaurus/preset-classic": "2.0.0-beta.6",
     "@mdx-js/react": "^1.6.21",
     "@nrwl/devkit": "12.9.0",
     "clsx": "^1.1.1",
@@ -22,6 +24,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "regenerator-runtime": "0.13.7",
+    "rimraf": "^3.0.2",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
