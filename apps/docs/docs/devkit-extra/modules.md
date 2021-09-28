@@ -18,7 +18,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[lib/devkit-extra.ts:6](https://github.com/Raft-Labs/raft-nx-plugins/blob/a0da3da/packages/devkit-extra/src/lib/devkit-extra.ts#L6)
+[lib/devkit-extra.ts:6](https://github.com/Raft-Labs/raft-nx-plugins/blob/01ad92f/packages/devkit-extra/src/lib/devkit-extra.ts#L6)
 
 ## Functions
 
@@ -38,7 +38,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[lib/devkit-extra.ts:12](https://github.com/Raft-Labs/raft-nx-plugins/blob/a0da3da/packages/devkit-extra/src/lib/devkit-extra.ts#L12)
+[lib/devkit-extra.ts:12](https://github.com/Raft-Labs/raft-nx-plugins/blob/01ad92f/packages/devkit-extra/src/lib/devkit-extra.ts#L12)
 
 ___
 
@@ -59,4 +59,4 @@ ___
 
 #### Defined in
 
-[lib/devkit-extra.ts:29](https://github.com/Raft-Labs/raft-nx-plugins/blob/a0da3da/packages/devkit-extra/src/lib/devkit-extra.ts#L29)
+[lib/devkit-extra.ts:29](https://github.com/Raft-Labs/raft-nx-plugins/blob/01ad92f/packages/devkit-extra/src/lib/devkit-extra.ts#L29)
