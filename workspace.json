@@ -34,6 +34,25 @@
         }
       }
     },
+    "docs": {
+      "projectType": "application",
+      "root": "apps/docs",
+      "sourceRoot": "apps/docs/src",
+      "targets": {
+        "build": {
+          "executor": "@nx-plus/docusaurus:browser",
+          "options": {
+            "outputPath": "dist/apps/docs"
+          }
+        },
+        "serve": {
+          "executor": "@nx-plus/docusaurus:dev-server",
+          "options": {
+            "port": 3000
+          }
+        }
+      }
+    },
     "firebase-react": {
       "root": "packages/firebase-react",
       "sourceRoot": "packages/firebase-react/src",
@@ -71,6 +90,39 @@
           "options": {
             "jestConfig": "packages/firebase-react/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "hbp-sdk": {
+      "root": "packages/hbp-sdk",
+      "sourceRoot": "packages/hbp-sdk/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/hbp-sdk",
+            "tsConfig": "packages/hbp-sdk/tsconfig.lib.json",
+            "project": "packages/hbp-sdk/package.json",
+            "entryFile": "packages/hbp-sdk/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "packages/hbp-sdk/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/hbp-sdk/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -140,25 +192,6 @@
           "options": {
             "target": "nx-hasura:build",
             "jestConfig": "apps/nx-hasura-e2e/jest.config.js"
-          }
-        }
-      }
-    },
-    "docs": {
-      "projectType": "application",
-      "root": "apps/docs",
-      "sourceRoot": "apps/docs/src",
-      "targets": {
-        "build": {
-          "executor": "@nx-plus/docusaurus:browser",
-          "options": {
-            "outputPath": "dist/apps/docs"
-          }
-        },
-        "serve": {
-          "executor": "@nx-plus/docusaurus:dev-server",
-          "options": {
-            "port": 3000
           }
         }
       }

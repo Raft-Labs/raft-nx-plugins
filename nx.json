@@ -30,7 +30,13 @@
     "devkit-extra": {
       "tags": []
     },
+    "docs": {
+      "tags": []
+    },
     "firebase-react": {
+      "tags": []
+    },
+    "hbp-sdk": {
       "tags": []
     },
     "nx-hasura": {
@@ -39,9 +45,6 @@
     "nx-hasura-e2e": {
       "tags": [],
       "implicitDependencies": ["nx-hasura"]
-    },
-    "docs": {
-      "tags": []
     }
   },
   "workspaceLayout": {
