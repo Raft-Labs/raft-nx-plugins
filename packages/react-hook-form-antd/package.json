@@ -1,4 +1,28 @@
 {
   "name": "@raftlabs/react-hook-form-antd",
-  "version": "0.0.1"
+  "version": "0.0.2",
+  "keywords": [
+    "nx",
+    "nx-plugin",
+    "react",
+    "form",
+    "react-hook-form",
+    "antd",
+    "react-component"
+  ],
+  "author": {
+    "name": "Aravind Jaimon",
+    "email": "email@aravindjaimon.me",
+    "url": "https://aravindjaimon.me"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raft-Labs/raft-nx-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Raft-Labs/raft-nx-plugins/issues"
+  },
+  "homepage": "https://github.com/Raft-Labs/raft-nx-plugins/tree/main/packages/react-hook-form-antd",
+  "description": "react-hook-form wrapper for antd form components."
 }

@@ -1,4 +1,29 @@
 {
   "name": "@raftlabs/hbp-sdk",
-  "version": "0.0.3"
+  "version": "0.0.4",
+  "keywords": [
+    "nx",
+    "nx-plugin",
+    "react",
+    "nhost",
+    "hasura-backend-plus",
+    "react-context",
+    "react-provider",
+    "auth"
+  ],
+  "author": {
+    "name": "Amal Chandran",
+    "email": "amalchandrandev@gmail.com",
+    "url": "https://amalchandran.me"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raft-Labs/raft-nx-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Raft-Labs/raft-nx-plugins/issues"
+  },
+  "homepage": "https://github.com/Raft-Labs/raft-nx-plugins/tree/main/packages/hbp-sdk",
+  "description": "Modified version of nhost-js-sdk"
 }
