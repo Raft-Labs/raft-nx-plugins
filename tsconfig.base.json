@@ -17,6 +17,7 @@
     "paths": {
       "@raftlabs/devkit-extra": ["packages/devkit-extra/src/index.ts"],
       "@raftlabs/firebase-react": ["packages/firebase-react/src/index.ts"],
+      "@raftlabs/hbp-react": ["packages/hbp-react/src/index.ts"],
       "@raftlabs/hbp-sdk": ["packages/hbp-sdk/src/index.ts"],
       "raftlabs/nx-hasura": ["packages/nx-hasura/src/index.ts"]
     }

@@ -94,6 +94,39 @@
         }
       }
     },
+    "hbp-react": {
+      "root": "packages/hbp-react",
+      "sourceRoot": "packages/hbp-react/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/hbp-react",
+            "tsConfig": "packages/hbp-react/tsconfig.lib.json",
+            "project": "packages/hbp-react/package.json",
+            "entryFile": "packages/hbp-react/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "packages/hbp-react/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/hbp-react/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
     "hbp-sdk": {
       "root": "packages/hbp-sdk",
       "sourceRoot": "packages/hbp-sdk/src",
