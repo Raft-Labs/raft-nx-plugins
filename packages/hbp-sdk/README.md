@@ -1,7 +1,3 @@
-# hbp-sdk
+# @raftlabs/hbp-sdk
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test hbp-sdk` to execute the unit tests via [Jest](https://jestjs.io).
+A modified version of nhost-js-sdk

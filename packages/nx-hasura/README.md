@@ -1,7 +1,3 @@
-# nx-hasura
+# @raftlabs/nx-hasura
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test nx-hasura` to execute the unit tests via [Jest](https://jestjs.io).
+An nx.dev plugin that generates hasura as a service in a workspace.

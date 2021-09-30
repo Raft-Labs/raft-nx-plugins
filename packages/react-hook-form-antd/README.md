@@ -1,7 +1,3 @@
-# react-hook-form-antd
+# @raftlabs/react-hook-form-antd
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test react-hook-form-antd` to execute the unit tests via [Jest](https://jestjs.io).
+An wrapper of antd form components with react-hook-form.
