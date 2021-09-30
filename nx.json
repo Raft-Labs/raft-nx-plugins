@@ -48,6 +48,9 @@
     "nx-hasura-e2e": {
       "tags": [],
       "implicitDependencies": ["nx-hasura"]
+    },
+    "react-hook-form-antd": {
+      "tags": []
     }
   },
   "workspaceLayout": {
