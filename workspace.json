@@ -94,6 +94,39 @@
         }
       }
     },
+    "hasura-react": {
+      "root": "packages/hasura-react",
+      "sourceRoot": "packages/hasura-react/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/hasura-react",
+            "tsConfig": "packages/hasura-react/tsconfig.lib.json",
+            "project": "packages/hasura-react/package.json",
+            "entryFile": "packages/hasura-react/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "packages/hasura-react/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/hasura-react/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
     "hbp-react": {
       "root": "packages/hbp-react",
       "sourceRoot": "packages/hbp-react/src",
