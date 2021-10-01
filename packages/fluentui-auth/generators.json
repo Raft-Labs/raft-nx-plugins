@@ -3,7 +3,7 @@
   "name": "fluentui-auth",
   "version": "0.0.1",
   "generators": {
-    "fluentui-auth": {
+    "generate-files": {
       "factory": "./src/generators/fluentui-auth/generator",
       "schema": "./src/generators/fluentui-auth/schema.json",
       "description": "fluentui-auth generator"
