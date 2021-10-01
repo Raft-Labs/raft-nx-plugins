@@ -1,0 +1,52 @@
+import { Link, Stack, Text } from '@fluentui/react';
+import { useAuth } from '@raftlabs/firebase-react';
+import { applyActionCode } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import AuthLayout from '../components/AuthLayout';
+
+export default function ActivateAccount() {
+  const [isActionCodeValid, setActionCodeValid] = useState(false);
+  const { auth } = useAuth();
+  const router = useRouter();
+  const oobCode = router.query['oobCode'] as string;
+  console.log(oobCode);
+
+  useEffect(() => {
+    if (oobCode) {
+      applyActionCode(auth, oobCode)
+        .then(() => {
+          auth.currentUser.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('Invalid oobCode');
+        });
+    }
+    const user = auth.currentUser;
+    if (user.emailVerified) setActionCodeValid(true);
+  }, [auth, oobCode]);
+
+  return (
+    <>
+      {isActionCodeValid ? (
+        <AuthLayout>
+          <Stack.Item>
+            <Text variant="xxLargePlus">Account Activated</Text>
+          </Stack.Item>
+          <Stack.Item>
+            <Text variant="large">
+              Your Account is now activated. You may click on link below to sign
+              in now.
+            </Text>
+          </Stack.Item>
+          <Stack.Item>
+            <Link href="/sign-in">Login</Link>
+          </Stack.Item>
+        </AuthLayout>
+      ) : (
+        <h1>Link Expired please try again</h1>
+      )}
+    </>
+  );
+}

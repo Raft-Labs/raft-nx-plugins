@@ -36,6 +36,13 @@
     "firebase-react": {
       "tags": []
     },
+    "fluentui-auth": {
+      "tags": []
+    },
+    "fluentui-auth-e2e": {
+      "tags": [],
+      "implicitDependencies": ["fluentui-auth"]
+    },
     "hasura-react": {
       "tags": []
     },

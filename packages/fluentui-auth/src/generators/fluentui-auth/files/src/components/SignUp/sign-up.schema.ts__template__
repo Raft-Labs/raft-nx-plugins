@@ -1,0 +1,29 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import YupPassword from 'yup-password';
+
+YupPassword(yup);
+
+const schema = yup.object().shape({
+  firstName: yup
+    .string()
+    .required('Please enter your ${label}')
+    .label('First Name'),
+  lastName: yup
+    .string()
+    .required('Please enter your ${label}')
+    .label('Last Name'),
+  email: yup
+    .string()
+    .email('Email must be valid')
+    .required('Please enter your ${label}')
+    .label('Email'),
+  password: yup
+    .string()
+    .password()
+    .required('Please enter your ${label}')
+    .label('Password'),
+});
+const signUpSchema = yupResolver(schema);
+
+export default signUpSchema;

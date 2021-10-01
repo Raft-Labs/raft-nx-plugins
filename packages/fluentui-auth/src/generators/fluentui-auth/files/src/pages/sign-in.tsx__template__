@@ -1,0 +1,13 @@
+import React from 'react';
+import AuthLayout from '../components/AuthLayout';
+import SignIn from '../components/SignIn/SignIn';
+
+const SignInPage = () => {
+  return (
+    <AuthLayout>
+      <SignIn />
+    </AuthLayout>
+  );
+};
+
+export default SignInPage;

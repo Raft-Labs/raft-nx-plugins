@@ -94,6 +94,75 @@
         }
       }
     },
+    "fluentui-auth": {
+      "root": "packages/fluentui-auth",
+      "sourceRoot": "packages/fluentui-auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/fluentui-auth/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/fluentui-auth"],
+          "options": {
+            "jestConfig": "packages/fluentui-auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/fluentui-auth",
+            "tsConfig": "packages/fluentui-auth/tsconfig.lib.json",
+            "packageJson": "packages/fluentui-auth/package.json",
+            "main": "packages/fluentui-auth/src/index.ts",
+            "assets": [
+              "packages/fluentui-auth/*.md",
+              {
+                "input": "./packages/fluentui-auth/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/fluentui-auth/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/fluentui-auth",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/fluentui-auth",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fluentui-auth-e2e": {
+      "root": "apps/fluentui-auth-e2e",
+      "projectType": "application",
+      "sourceRoot": "apps/fluentui-auth-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "fluentui-auth:build",
+            "jestConfig": "apps/fluentui-auth-e2e/jest.config.js"
+          }
+        }
+      }
+    },
     "hasura-react": {
       "root": "packages/hasura-react",
       "sourceRoot": "packages/hasura-react/src",

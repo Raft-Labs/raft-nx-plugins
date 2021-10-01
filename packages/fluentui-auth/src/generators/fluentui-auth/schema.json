@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "FluentUiAuth",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Project Name",
+      "$default": {
+        "$source": "projectName",
+        "index": 0
+      }
+    }
+  },
+  "required": ["project"]
+}

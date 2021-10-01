@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "fluentui-auth",
+  "version": "0.0.1",
+  "generators": {
+    "fluentui-auth": {
+      "factory": "./src/generators/fluentui-auth/generator",
+      "schema": "./src/generators/fluentui-auth/schema.json",
+      "description": "fluentui-auth generator"
+    }
+  }
+}

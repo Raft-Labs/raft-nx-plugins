@@ -1,0 +1,24 @@
+import { Spinner } from '@fluentui/react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+export default function URLRequestHandler() {
+  const router = useRouter();
+  const { mode, oobCode } = router.query;
+  console.log(oobCode);
+
+  useEffect(() => {
+    switch (mode) {
+      case 'resetPassword':
+        router.push(`/reset-password?oobCode=${oobCode}`);
+        break;
+      case 'verifyEmail':
+        router.push(`/activate-account?oobCode=${oobCode}`);
+        break;
+      default:
+        break;
+    }
+  }, [mode, oobCode, router]);
+
+  return <Spinner>Loading</Spinner>;
+}

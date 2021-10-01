@@ -1,0 +1,25 @@
+import { Link, Stack, Text } from '@fluentui/react';
+import { useAuth } from '@raftlabs/firebase-react';
+import React from 'react';
+
+const Index = () => {
+  const { signedIn, user } = useAuth();
+  return (
+    <Stack>
+      <Stack.Item>
+        <Text>{`Signed In:${signedIn}`}</Text>
+      </Stack.Item>
+      <Stack.Item>
+        <Text>{user?.email}</Text>
+      </Stack.Item>
+      <Link href="/sign-in">Sign In</Link>
+      <Link href="/sign-up">Sign Up</Link>
+      <Link href="/forgot-password">Forgot Password</Link>
+      <Link href="/change-password">Change Password</Link>
+      <Link href="/activate-account">Activate Account</Link>
+      <Link href="/reset-password">Reset Password</Link>
+    </Stack>
+  );
+};
+
+export default Index;

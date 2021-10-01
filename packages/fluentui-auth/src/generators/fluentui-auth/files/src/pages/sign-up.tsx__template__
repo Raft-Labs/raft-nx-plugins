@@ -1,0 +1,13 @@
+import React from 'react';
+import AuthLayout from '../components/AuthLayout';
+import Signup from '../components/SignUp/SignUp';
+
+const SignUpPage = () => {
+  return (
+    <AuthLayout>
+      <Signup />
+    </AuthLayout>
+  );
+};
+
+export default SignUpPage;

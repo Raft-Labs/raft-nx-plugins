@@ -1,0 +1,107 @@
+import { Link, PrimaryButton, Stack, Text } from '@fluentui/react';
+import {
+  Form,
+  InputField,
+  PasswordInputField,
+} from '@raftlabs/react-hook-form-fluentui';
+import { useAuth } from '@raftlabs/firebase-react';
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from 'firebase/auth';
+import React, { useCallback } from 'react';
+import { useForm } from 'react-hook-form';
+import signUpSchema from './sign-up.schema';
+import Router from 'next/router';
+
+export default function Signup() {
+  const formHook = useForm({
+    resolver: signUpSchema,
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    },
+    reValidateMode: 'onSubmit',
+    mode: 'all',
+  });
+
+  const { auth } = useAuth();
+
+  const onSubmit = useCallback(
+    async ({ email, password }) => {
+      try {
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((res) => {
+            console.log('Signup successful');
+            sendEmailVerification(auth.currentUser);
+            Router.push('/');
+          })
+          .catch((err) => {
+            alert('Signup fail');
+          });
+      } catch (er) {
+        console.log(er);
+        throw er;
+      }
+    },
+    [auth]
+  );
+
+  return (
+    <>
+      <Form formHook={formHook} onSubmit={onSubmit}>
+        <Stack.Item>
+          <Text variant="xxLarge">Signup</Text>
+        </Stack.Item>
+        <Stack.Item>
+          <InputField
+            required={true}
+            label="First Name"
+            formHook={formHook}
+            Styles={{ root: { width: 300 } }}
+            name="firstName"
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <InputField
+            required={true}
+            label="Last Name"
+            formHook={formHook}
+            Styles={{ root: { width: 300 } }}
+            name="lastName"
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <InputField
+            required={true}
+            label="Email"
+            formHook={formHook}
+            Styles={{ root: { width: 300 } }}
+            name="email"
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <PasswordInputField
+            required={true}
+            label="Password"
+            formHook={formHook}
+            Styles={{ root: { width: 300 } }}
+            name="password"
+            strengthMeter={true}
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <PrimaryButton type="submit" text="Signup" />
+        </Stack.Item>
+        <Stack.Item>
+          <Text>already have an account ?</Text>
+        </Stack.Item>
+        <Stack.Item>
+          <Link href="/sign-in">Login</Link>
+        </Stack.Item>
+      </Form>
+    </>
+  );
+}
