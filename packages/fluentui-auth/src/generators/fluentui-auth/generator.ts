@@ -1,5 +1,4 @@
 import {
-  addProjectConfiguration,
   formatFiles,
   generateFiles,
   getProjects,
@@ -49,16 +48,7 @@ export default async function (
   options: FluentUiAuthGeneratorSchema
 ) {
   const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(tree, 'fluentui-auth', {
-    root: normalizedOptions.projectRoot,
-    projectType: 'library',
-    sourceRoot: `${normalizedOptions.projectRoot}/src`,
-    targets: {
-      build: {
-        executor: '@raftlabs/fluentui-auth:build',
-      },
-    },
-  });
+
   addFiles(tree, normalizedOptions);
   await formatFiles(tree);
 }
