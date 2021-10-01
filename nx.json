@@ -54,6 +54,9 @@
     },
     "react-hook-form-antd": {
       "tags": []
+    },
+    "react-hook-form-fluentui": {
+      "tags": []
     }
   },
   "workspaceLayout": {

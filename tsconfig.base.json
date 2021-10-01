@@ -23,6 +23,9 @@
       "@raftlabs/react-hook-form-antd": [
         "packages/react-hook-form-antd/src/index.ts"
       ],
+      "@raftlabs/react-hook-form-fluentui": [
+        "packages/react-hook-form-fluentui/src/index.ts"
+      ],
       "raftlabs/nx-hasura": ["packages/nx-hasura/src/index.ts"]
     }
   },

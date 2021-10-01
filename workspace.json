@@ -296,6 +296,41 @@
           }
         }
       }
+    },
+    "react-hook-form-fluentui": {
+      "root": "packages/react-hook-form-fluentui",
+      "sourceRoot": "packages/react-hook-form-fluentui/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/react-hook-form-fluentui",
+            "tsConfig": "packages/react-hook-form-fluentui/tsconfig.lib.json",
+            "project": "packages/react-hook-form-fluentui/package.json",
+            "entryFile": "packages/react-hook-form-fluentui/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "packages/react-hook-form-fluentui/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "packages/react-hook-form-fluentui/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
