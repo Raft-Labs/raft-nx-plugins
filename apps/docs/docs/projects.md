@@ -2,7 +2,7 @@
 id: projects
 title: Projects
 sidebar_label: Projects
-sidebar_position: 1
+sidebar_position: 0
 slug: /
 ---
 
