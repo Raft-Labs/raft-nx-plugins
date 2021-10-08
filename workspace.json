@@ -163,6 +163,85 @@
         }
       }
     },
+    "frontend": {
+      "root": "apps/frontend",
+      "sourceRoot": "apps/frontend",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/frontend",
+            "outputPath": "dist/apps/frontend"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "frontend:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "frontend:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "frontend:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/frontend"],
+          "options": {
+            "jestConfig": "apps/frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/frontend/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "frontend-e2e": {
+      "root": "apps/frontend-e2e",
+      "sourceRoot": "apps/frontend-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/frontend-e2e/cypress.json",
+            "devServerTarget": "frontend:serve",
+            "tsConfig": "apps/frontend-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/frontend-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
     "hasura-react": {
       "root": "packages/hasura-react",
       "sourceRoot": "packages/hasura-react/src",
@@ -410,6 +489,13 @@
       "application": {
         "babel": true
       }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
     }
-  }
+  },
+  "defaultProject": "frontend"
 }

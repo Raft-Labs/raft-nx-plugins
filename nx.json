@@ -43,6 +43,13 @@
       "tags": [],
       "implicitDependencies": ["fluentui-auth"]
     },
+    "frontend": {
+      "tags": []
+    },
+    "frontend-e2e": {
+      "tags": [],
+      "implicitDependencies": ["frontend"]
+    },
     "hasura-react": {
       "tags": []
     },
