@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { AuthUser, AuthUserType } from './AuthUser';
 
-interface AuthProviderProps {
+export interface AuthProviderProps {
   children: React.ReactNode;
   auth: Auth;
 }
