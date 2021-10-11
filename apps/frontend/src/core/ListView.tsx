@@ -1,7 +1,7 @@
+import { IListView } from '@raftlabs/nx-admin';
 import { get } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'urql';
-import { IListView } from '../types/interfaces';
 
 const ListView = ({
   query,

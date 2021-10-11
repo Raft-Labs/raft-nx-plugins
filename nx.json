@@ -59,6 +59,13 @@
     "hbp-sdk": {
       "tags": []
     },
+    "nx-admin": {
+      "tags": []
+    },
+    "nx-admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nx-admin"]
+    },
     "nx-hasura": {
       "tags": []
     },

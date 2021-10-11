@@ -1,7 +1,6 @@
-import { useRouter } from 'next/dist/client/router';
+import { ILayoutProvider, IResource, useResource } from '@raftlabs/nx-admin';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { useResource } from '../hooks/useResource';
-import { ILayoutProvider, IResource } from '../types/interfaces';
 
 const MainLayout = ({ resources, children }: ILayoutProvider) => {
   const router = useRouter();

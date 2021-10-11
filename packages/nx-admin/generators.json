@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-admin",
+  "version": "0.0.1",
+  "generators": {
+    "nx-admin": {
+      "factory": "./src/generators/nx-admin/generator",
+      "schema": "./src/generators/nx-admin/schema.json",
+      "description": "nx-admin generator"
+    }
+  }
+}

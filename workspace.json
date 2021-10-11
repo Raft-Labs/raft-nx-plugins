@@ -341,6 +341,75 @@
         }
       }
     },
+    "nx-admin": {
+      "root": "packages/nx-admin",
+      "sourceRoot": "packages/nx-admin/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/nx-admin/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-admin"],
+          "options": {
+            "jestConfig": "packages/nx-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-admin",
+            "tsConfig": "packages/nx-admin/tsconfig.lib.json",
+            "packageJson": "packages/nx-admin/package.json",
+            "main": "packages/nx-admin/src/index.ts",
+            "assets": [
+              "packages/nx-admin/*.md",
+              {
+                "input": "./packages/nx-admin/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-admin/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-admin",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-admin",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-admin-e2e": {
+      "root": "apps/nx-admin-e2e",
+      "projectType": "application",
+      "sourceRoot": "apps/nx-admin-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-admin:build",
+            "jestConfig": "apps/nx-admin-e2e/jest.config.js"
+          }
+        }
+      }
+    },
     "nx-hasura": {
       "root": "packages/nx-hasura",
       "sourceRoot": "packages/nx-hasura/src",

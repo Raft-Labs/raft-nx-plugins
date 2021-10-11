@@ -1,22 +1,34 @@
+import { Admin, IResource } from '@raftlabs/nx-admin';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { HASURA_BASE_URL } from '../configs';
-import { Admin } from '../core/Admin';
-import { auth } from '../helpers/hbp-helper';
+import {
+  HelloCreate,
+  HelloEdit,
+  HelloList,
+  HelloShow,
+} from '../components/Hello';
+import LayoutProvider from '../layouts/LayoutProvider';
 import './styles.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const resources: IResource[] = [
+    {
+      label: 'Hello',
+      name: 'hello',
+      list: HelloList,
+      create: HelloCreate,
+      edit: HelloEdit,
+      show: HelloShow,
+    },
+  ];
+
   return (
     <>
       <Head>
-        <title>Frontend</title>
+        <title>Nx Admin</title>
       </Head>
       <main>
-        <Admin
-          resources={[{ label: 'Hello', name: 'hello' }]}
-          auth={auth}
-          url={HASURA_BASE_URL}
-        >
+        <Admin resources={resources} layout={LayoutProvider}>
           <Component {...pageProps} />
         </Admin>
       </main>
