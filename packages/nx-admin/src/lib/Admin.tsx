@@ -1,75 +1,100 @@
-import { IColumn } from '@fluentui/react/lib/DetailsList';
-import React, {
-  createContext,
-  Dispatch,
-  FC,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
-
-export interface IResource {
-  name: string;
-  label: string;
-  list?: FC;
-  show?: FC;
-  create?: FC;
-  edit?: FC;
-  icon?: ReactNode;
-}
-export interface IResourceContext {
-  resource: IResource;
-  setResource: Dispatch<SetStateAction<IResource>>;
-}
-export interface IAdmin {
-  gqlProvider?: FC;
-  authProvider?: FC;
-  resources: IResource[];
-  children: ReactNode;
-  layout: FC<ILayoutProvider>;
-}
-
-export interface ILayoutProvider {
-  children: ReactNode;
-  resources: IResource[];
-}
-
-export interface IListView {
-  query?: string;
-  columns?: IColumn;
-  variables?: Record<string, unknown>;
-  pause?: boolean;
-  queryPath?: string;
-  resource?: string;
-  children?: ReactNode;
-}
+import { INavLinkGroup, PartialTheme, ThemeProvider } from '@fluentui/react';
+import { findKey } from 'lodash';
+import { useRouter } from 'next/router';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { IAdmin, IResource, IResourceContext } from './types';
 
 export const ResourceContext = createContext({} as IResourceContext);
+
+const basicTheme: PartialTheme = {
+  palette: {
+    themePrimary: '#0f8387',
+    themeDark: '#324c4d',
+  },
+};
 
 export const Admin = ({
   authProvider,
   gqlProvider,
-  resources,
+  resources: resourcesData,
   layout,
   children,
+  theme = basicTheme,
 }: IAdmin) => {
-  const [resource, setResource] = useState<IResource>(resources[0]);
+  const router = useRouter();
+  const { resource: resourceName } = router.query;
+  const [resources, setResources] = useState<IResource[]>(resourcesData);
+  const [resource, setResource] = useState<IResource>(resourcesData[0]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (resourceName && resourcesData) {
+      setLoading(true);
+      const resourceKey = findKey(
+        resourcesData,
+        (resource: IResource) => resource.name === resourceName
+      );
+      setResource(resources[parseInt(`${resourceKey}`)]);
+      setLoading(false);
+    }
+  }, [resourceName, resourcesData]);
+
   const AuthProvider = authProvider;
   const GraphQLProvider = gqlProvider;
   const LayoutProvider = layout;
+
   return (
-    // <AuthProvider>
-    // <GraphQLProvider>
-    <ResourceContext.Provider value={{ resource, setResource }}>
-      <LayoutProvider resources={resources}>{children}</LayoutProvider>
-    </ResourceContext.Provider>
-    // </GraphQLProvider>
-    // </AuthProvider>
+    <ThemeProvider theme={theme}>
+      {/* <AuthProvider> */}
+      {/* <GraphQLProvider> */}
+      <ResourceContext.Provider
+        value={{
+          resource,
+          setResource,
+          resources,
+          setResources,
+          loading,
+          setLoading,
+        }}
+      >
+        <LayoutProvider resources={resources}>{children}</LayoutProvider>
+      </ResourceContext.Provider>
+      {/* </GraphQLProvider> */}
+      {/* </AuthProvider> */}
+    </ThemeProvider>
   );
 };
 
 export const useResource = () => {
-  const { resource, setResource } = useContext(ResourceContext);
-  return { ...resource, setResource };
+  const {
+    resource,
+    setResource,
+    resources,
+    setResources,
+    loading,
+    setLoading,
+  } = useContext(ResourceContext);
+  const resourceRoutes: INavLinkGroup[] = [
+    {
+      links: resources.map((resource) => {
+        return {
+          name: resource?.label,
+          url: `/${resource?.name}/list`,
+          key: `${resource?.name}`,
+          iconProps: {
+            iconName: resource.icon ? resource?.icon : 'Contact',
+          },
+        };
+      }),
+    },
+  ];
+  return {
+    ...resource,
+    setResource,
+    resources,
+    setResources,
+    resourceRoutes,
+    setLoading,
+    loading,
+  };
 };

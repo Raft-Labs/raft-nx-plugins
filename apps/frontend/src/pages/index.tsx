@@ -1,4 +1,4 @@
-import { useResource } from '@raftlabs/nx-admin';
+import { PageLoader, useResource } from '@raftlabs/nx-admin';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -8,7 +8,7 @@ const Dashboard = () => {
   useEffect(() => {
     router.push(`/${name}/list`);
   }, []);
-  return 'Loading....';
+  return <PageLoader />;
 };
 
 export default Dashboard;

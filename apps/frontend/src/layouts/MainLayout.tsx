@@ -1,16 +1,130 @@
-import { ILayoutProvider, IResource, useResource } from '@raftlabs/nx-admin';
+import {
+  ContextualMenuItemType,
+  IconButton,
+  IContextualMenuProps,
+  INavLinkGroup,
+  INavStyles,
+  Nav,
+  Stack,
+} from '@fluentui/react';
+import { useConst } from '@fluentui/react-hooks';
+import {
+  ILayoutProvider,
+  IResource,
+  PageLoader,
+  useResource,
+} from '@raftlabs/nx-admin';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-const MainLayout = ({ resources, children }: ILayoutProvider) => {
+const MainLayout = ({ children, resources }: ILayoutProvider) => {
   const router = useRouter();
-  const { setResource } = useResource();
+  const { setResource, resourceRoutes, loading } = useResource();
 
   const onClickMenu = async (resource: IResource) => {
     await setResource(resource);
-    router.push(`/${resource?.name}/list`);
   };
-  return <div>{children}</div>;
+
+  const navStyles: Partial<INavStyles> = {
+    root: {
+      height: '93vh',
+      boxSizing: 'border-box',
+      border: '1px solid #eee',
+      overflowY: 'auto',
+      width: 300,
+    },
+  };
+
+  const menuProps = useConst<IContextualMenuProps>(() => ({
+    shouldFocusOnMount: true,
+    items: [
+      {
+        key: 'Admin',
+        itemType: ContextualMenuItemType.Header,
+        text: 'Admin',
+        itemProps: { lang: 'en-us' },
+        iconProps: { iconName: 'Contact' },
+      },
+
+      { key: 'Logout', iconProps: { iconName: 'SignOut' }, text: 'Logout' },
+    ],
+  }));
+  const navLinkGroups: INavLinkGroup[] = resourceRoutes;
+  return (
+    <Stack verticalFill>
+      <Stack.Item>
+        <Stack
+          horizontal
+          verticalFill
+          horizontalAlign="space-between"
+          verticalAlign="center"
+          tokens={{ childrenGap: 10 }}
+          styles={{ root: { backgroundColor: '#ccc', height: 50 } }}
+        >
+          <Stack.Item>
+            <Stack horizontal verticalAlign="center">
+              <Stack.Item></Stack.Item>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack horizontal verticalAlign="center">
+              <Stack.Item>
+                <IconButton
+                  styles={{
+                    root: {
+                      padding: 10,
+                    },
+                    rootHovered: {
+                      backgroundColor: 'transparent',
+                    },
+                    rootPressed: {
+                      backgroundColor: 'transparent',
+                    },
+                    rootExpanded: {
+                      backgroundColor: 'transparent',
+                    },
+                  }}
+                  menuProps={menuProps}
+                  iconProps={{
+                    iconName: 'Contact',
+                    styles: {
+                      root: {
+                        width: 20,
+                        height: 20,
+                        backgroundColor: '#fff',
+                        padding: 5,
+                        borderRadius: '100%',
+                      },
+                    },
+                  }}
+                ></IconButton>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+      <Stack.Item>
+        <Stack horizontal>
+          <Stack.Item>
+            <Nav
+              styles={navStyles}
+              ariaLabel="Resource Navigation bar"
+              groups={navLinkGroups}
+            />
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack
+              styles={{ root: { padding: 20, background: '#F3F2F1' } }}
+              verticalFill
+              horizontal
+            >
+              {loading ? <PageLoader /> : children}
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+    </Stack>
+  );
 };
 
 export default MainLayout;
