@@ -6,28 +6,19 @@ import {
   INavStyles,
   Nav,
   Stack,
+  Text,
 } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
-import {
-  ILayoutProvider,
-  IResource,
-  PageLoader,
-  useResource,
-} from '@raftlabs/nx-admin';
-import { useRouter } from 'next/router';
+import { ILayoutProvider, PageLoader, useResource } from '@raftlabs/nx-admin';
 import React from 'react';
 
 const MainLayout = ({ children, resources }: ILayoutProvider) => {
-  const router = useRouter();
-  const { setResource, resourceRoutes, loading } = useResource();
-
-  const onClickMenu = async (resource: IResource) => {
-    await setResource(resource);
-  };
+  const { name, resourceRoutes, loading } = useResource();
 
   const navStyles: Partial<INavStyles> = {
     root: {
-      height: '93vh',
+      minHeight: 'calc(100vh - 70px)',
+      paddingTop: 5,
       boxSizing: 'border-box',
       border: '1px solid #eee',
       overflowY: 'auto',
@@ -59,11 +50,19 @@ const MainLayout = ({ children, resources }: ILayoutProvider) => {
           horizontalAlign="space-between"
           verticalAlign="center"
           tokens={{ childrenGap: 10 }}
-          styles={{ root: { backgroundColor: '#ccc', height: 50 } }}
+          styles={{ root: { backgroundColor: '#ccc', height: 70 } }}
         >
           <Stack.Item>
             <Stack horizontal verticalAlign="center">
-              <Stack.Item></Stack.Item>
+              <Stack.Item>
+                <Text
+                  block
+                  variant="xxLargePlus"
+                  styles={{ root: { padding: 10 } }}
+                >
+                  Nx Admin
+                </Text>
+              </Stack.Item>
             </Stack>
           </Stack.Item>
           <Stack.Item>
@@ -110,11 +109,14 @@ const MainLayout = ({ children, resources }: ILayoutProvider) => {
               styles={navStyles}
               ariaLabel="Resource Navigation bar"
               groups={navLinkGroups}
+              selectedKey={name}
             />
           </Stack.Item>
           <Stack.Item grow>
             <Stack
-              styles={{ root: { padding: 20, background: '#F3F2F1' } }}
+              styles={{
+                root: { padding: 20, background: '#fcfcfc', width: '100%' },
+              }}
               verticalFill
               horizontal
             >

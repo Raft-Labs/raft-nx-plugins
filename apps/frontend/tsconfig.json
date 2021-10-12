@@ -12,13 +12,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    "next-env.d.ts",
-    "../../packages/nx-admin/src/lib/PageLoader.tsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
   "exclude": ["node_modules"]
 }

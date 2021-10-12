@@ -14,8 +14,6 @@ const basicTheme: PartialTheme = {
 };
 
 export const Admin = ({
-  authProvider,
-  gqlProvider,
   resources: resourcesData,
   layout,
   children,
@@ -26,6 +24,8 @@ export const Admin = ({
   const [resources, setResources] = useState<IResource[]>(resourcesData);
   const [resource, setResource] = useState<IResource>(resourcesData[0]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [item, setItem] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     if (resourceName && resourcesData) {
@@ -39,14 +39,10 @@ export const Admin = ({
     }
   }, [resourceName, resourcesData]);
 
-  const AuthProvider = authProvider;
-  const GraphQLProvider = gqlProvider;
   const LayoutProvider = layout;
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <AuthProvider> */}
-      {/* <GraphQLProvider> */}
       <ResourceContext.Provider
         value={{
           resource,
@@ -55,12 +51,14 @@ export const Admin = ({
           setResources,
           loading,
           setLoading,
+          setItem,
+          item,
+          setItems,
+          items,
         }}
       >
         <LayoutProvider resources={resources}>{children}</LayoutProvider>
       </ResourceContext.Provider>
-      {/* </GraphQLProvider> */}
-      {/* </AuthProvider> */}
     </ThemeProvider>
   );
 };
@@ -73,6 +71,10 @@ export const useResource = () => {
     setResources,
     loading,
     setLoading,
+    setItem,
+    item,
+    setItems,
+    items,
   } = useContext(ResourceContext);
   const resourceRoutes: INavLinkGroup[] = [
     {
@@ -96,5 +98,9 @@ export const useResource = () => {
     resourceRoutes,
     setLoading,
     loading,
+    setItem,
+    item,
+    setItems,
+    items,
   };
 };

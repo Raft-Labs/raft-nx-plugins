@@ -3,17 +3,18 @@ import { Admin, IResource } from '@raftlabs/nx-admin';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import {
+  DepartmentShow,
+  DepartmentsList,
   HelloCreate,
   HelloEdit,
-  HelloList,
-  HelloShow,
-} from '../components/Hello';
+} from '../components/Departments';
 import {
+  DivisionsList,
   Hello1Create,
   Hello1Edit,
-  Hello1List,
   Hello1Show,
-} from '../components/Hello1';
+} from '../components/Divisions';
+import GraphQlProvider from '../helpers/urqlClient';
 import LayoutProvider from '../layouts/LayoutProvider';
 import './styles.css';
 initializeIcons(undefined, { disableWarnings: true });
@@ -21,28 +22,20 @@ initializeIcons(undefined, { disableWarnings: true });
 const App = ({ Component, pageProps }: AppProps) => {
   const resources: IResource[] = [
     {
-      label: 'Hello',
-      name: 'hello',
-      list: HelloList,
+      label: 'Departments',
+      name: 'departments',
+      list: DepartmentsList,
       create: HelloCreate,
       edit: HelloEdit,
-      show: HelloShow,
+      show: DepartmentShow,
     },
     {
-      label: 'Hello1',
-      name: 'hello1',
-      list: Hello1List,
+      label: 'Divisions',
+      name: 'divisions',
+      list: DivisionsList,
       create: Hello1Create,
       edit: Hello1Edit,
       show: Hello1Show,
-    },
-    {
-      label: 'Hello2',
-      name: 'hello2',
-      list: HelloList,
-      create: HelloCreate,
-      edit: HelloEdit,
-      show: HelloShow,
     },
   ];
 
@@ -52,9 +45,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Nx Admin</title>
       </Head>
       <main>
-        <Admin resources={resources} layout={LayoutProvider}>
-          <Component {...pageProps} />
-        </Admin>
+        <GraphQlProvider>
+          <Admin resources={resources} layout={LayoutProvider}>
+            <Component {...pageProps} />
+          </Admin>
+        </GraphQlProvider>
       </main>
     </>
   );
