@@ -10,7 +10,7 @@ import {
   subscriptionExchange,
 } from 'urql';
 
-export const createGQLClient = (url: string, auth: Auth) => {
+const createGQLClient = (url: string, auth: Auth) => {
   const subscriptionClient = createWSClient({
     url: url.replace('http://', 'ws://').replace('https://', 'wss://'),
     connectionParams: () => {
