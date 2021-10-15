@@ -12,6 +12,7 @@ import { useConst } from '@fluentui/react-hooks';
 import { useAuth } from '@raftlabs/hbp-react';
 import { ILayoutProvider, PageLoader, useResource } from '@raftlabs/nx-admin';
 import React from 'react';
+import { auth } from '../helpers/hbp-helper';
 
 const MainLayout = ({ children, resources }: ILayoutProvider) => {
   const { name, resourceRoutes, loading } = useResource();
@@ -40,7 +41,14 @@ const MainLayout = ({ children, resources }: ILayoutProvider) => {
         iconProps: { iconName: 'Contact' },
       },
 
-      { key: 'Logout', iconProps: { iconName: 'SignOut' }, text: 'Logout' },
+      {
+        key: 'Logout',
+        iconProps: { iconName: 'SignOut' },
+        text: 'Logout',
+        onClick: () => {
+          auth.logout();
+        },
+      },
     ],
   }));
   const navLinkGroups: INavLinkGroup[] = resourceRoutes;
