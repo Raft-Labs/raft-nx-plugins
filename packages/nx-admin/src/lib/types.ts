@@ -1,6 +1,6 @@
 import { IColumn, PartialTheme } from '@fluentui/react';
 import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
-import { TypedDocumentNode } from 'urql';
+import { OperationContext, OperationResult, TypedDocumentNode } from 'urql';
 export interface IResource {
   name: string;
   label: string;
@@ -10,6 +10,7 @@ export interface IResource {
   edit?: FC;
   icon?: string;
 }
+
 export interface IResourceContext {
   resource: IResource;
   setResource: Dispatch<SetStateAction<IResource>>;
@@ -21,6 +22,30 @@ export interface IResourceContext {
   setItem: Dispatch<SetStateAction<any>>;
   items: any;
   setItems: Dispatch<SetStateAction<any>>;
+  createMutation: (
+    variables?: any,
+    context?: Partial<OperationContext> | undefined
+  ) => Promise<OperationResult<any, any>>;
+  setCreateMutation: Dispatch<
+    SetStateAction<
+      (
+        variables?: any,
+        context?: Partial<OperationContext> | undefined
+      ) => Promise<OperationResult<any, any>>
+    >
+  >;
+  editMutation: (
+    variables?: any,
+    context?: Partial<OperationContext> | undefined
+  ) => Promise<OperationResult<any, any>>;
+  setEditMutation: Dispatch<
+    SetStateAction<
+      (
+        variables?: any,
+        context?: Partial<OperationContext> | undefined
+      ) => Promise<OperationResult<any, any>>
+    >
+  >;
 }
 export interface IAdmin {
   resources: IResource[];
@@ -51,8 +76,28 @@ export interface IShowView {
   title?: string;
 }
 
-export interface IActionButtonProps {
+export interface IActionButtonWithIdProps {
   id: string;
   type?: 'icon' | 'primary';
   tooltip?: string;
+}
+export interface IActionButtonWithoutIdProps {
+  type?: 'icon' | 'primary';
+  tooltip?: string;
+}
+
+export interface ICreateView {
+  mutation: string | TypedDocumentNode<any, any>;
+  queryPath?: string;
+  children: ReactNode;
+  title?: string;
+}
+export interface IEditView {
+  mutation: string | TypedDocumentNode<any, any>;
+  query: string | TypedDocumentNode<any, any>;
+  queryPath?: string;
+  children: ReactNode;
+  title?: string;
+  variables?: Record<string, unknown>;
+  pause?: boolean;
 }

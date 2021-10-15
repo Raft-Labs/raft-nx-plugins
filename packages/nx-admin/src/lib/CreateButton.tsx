@@ -1,29 +1,28 @@
 import { IconButton, PrimaryButton, TooltipHost } from '@fluentui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { IActionButtonWithIdProps } from './types';
+import { IActionButtonWithoutIdProps } from './types';
 
-export const ShowButton = ({
-  id,
+export const CreateButton = ({
   type = 'primary',
-  tooltip = 'Show',
-}: IActionButtonWithIdProps) => {
+  tooltip = 'Create',
+}: IActionButtonWithoutIdProps) => {
   const router = useRouter();
   const { resource } = router.query;
 
   if (type === 'primary') {
     return (
       <PrimaryButton
-        text="Show"
-        onClick={() => router.push(`/${resource}/${id}/show`)}
+        text="Create"
+        onClick={() => router.push(`/${resource}/create`)}
       />
     );
   }
   return (
-    <TooltipHost content={tooltip} id={id}>
+    <TooltipHost content={tooltip}>
       <IconButton
-        iconProps={{ iconName: 'RedEye' }}
-        onClick={() => router.push(`/${resource}/${id}/show`)}
+        iconProps={{ iconName: 'Add' }}
+        onClick={() => router.push(`/${resource}/create`)}
       />
     </TooltipHost>
   );

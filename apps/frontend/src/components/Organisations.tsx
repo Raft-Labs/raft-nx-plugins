@@ -1,11 +1,11 @@
 import { ListView } from '@raftlabs/nx-admin';
 import React from 'react';
-import { Divisions } from './queries';
+import { Organisations } from './queries';
 
-export const DivisionsList = () => {
+export const OrganisationsList = () => {
   return (
     <ListView
-      query={Divisions}
+      query={Organisations}
       columns={[
         {
           key: 'id',
@@ -24,25 +24,26 @@ export const DivisionsList = () => {
           isResizable: true,
         },
         {
-          key: 'department',
-          name: 'Department',
-          fieldName: 'department',
+          key: 'slug',
+          name: 'Slug',
           minWidth: 100,
           maxWidth: 200,
           isResizable: true,
-          onRender: (item) => item.name,
+          onRender: (item) => item?.slug,
         },
       ]}
-    />
+    >
+      hello
+    </ListView>
   );
 };
 
-export const Hello1Show = () => {
+export const OrganisationsShow = () => {
   return <div>Show1 Example</div>;
 };
-export const Hello1Edit = () => {
+export const OrganisationsEdit = () => {
   return <div>Edit1 Example</div>;
 };
-export const Hello1Create = () => {
+export const OrganisationsCreate = () => {
   return <div>Create1 Example</div>;
 };

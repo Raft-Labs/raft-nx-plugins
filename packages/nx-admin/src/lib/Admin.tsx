@@ -26,6 +26,8 @@ export const Admin = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [item, setItem] = useState([]);
   const [items, setItems] = useState([]);
+  const [createMutation, setCreateMutation] = useState<any>();
+  const [editMutation, setEditMutation] = useState<any>();
 
   useEffect(() => {
     if (resourceName && resourcesData) {
@@ -55,6 +57,10 @@ export const Admin = ({
           item,
           setItems,
           items,
+          createMutation,
+          setCreateMutation,
+          editMutation,
+          setEditMutation,
         }}
       >
         <LayoutProvider resources={resources}>{children}</LayoutProvider>
@@ -75,6 +81,10 @@ export const useResource = () => {
     item,
     setItems,
     items,
+    createMutation,
+    setCreateMutation,
+    editMutation,
+    setEditMutation,
   } = useContext(ResourceContext);
   const resourceRoutes: INavLinkGroup[] = [
     {
@@ -102,5 +112,9 @@ export const useResource = () => {
     item,
     setItems,
     items,
+    createMutation,
+    setCreateMutation,
+    editMutation,
+    setEditMutation,
   };
 };

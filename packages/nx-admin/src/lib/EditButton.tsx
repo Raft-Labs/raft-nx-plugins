@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { IActionButtonWithIdProps } from './types';
 
-export const ShowButton = ({
+export const EditButton = ({
   id,
   type = 'primary',
-  tooltip = 'Show',
+  tooltip = 'Edit',
 }: IActionButtonWithIdProps) => {
   const router = useRouter();
   const { resource } = router.query;
@@ -14,16 +14,16 @@ export const ShowButton = ({
   if (type === 'primary') {
     return (
       <PrimaryButton
-        text="Show"
-        onClick={() => router.push(`/${resource}/${id}/show`)}
+        text="Edit"
+        onClick={() => router.push(`/${resource}/${id}/edit`)}
       />
     );
   }
   return (
-    <TooltipHost content={tooltip} id={id}>
+    <TooltipHost content={tooltip}>
       <IconButton
-        iconProps={{ iconName: 'RedEye' }}
-        onClick={() => router.push(`/${resource}/${id}/show`)}
+        iconProps={{ iconName: 'Edit' }}
+        onClick={() => router.push(`/${resource}/${id}/edit`)}
       />
     </TooltipHost>
   );

@@ -5,22 +5,18 @@ export const Departments = gql`
     departments {
       id
       name
-      description
       created_at
       updated_at
-      img_url
     }
   }
 `;
 
-export const Divisions = gql`
-  query divisions {
-    divisions {
+export const Organisations = gql`
+  query organizations {
+    organizations {
       id
       name
-      department {
-        name
-      }
+      slug
     }
   }
 `;
@@ -30,7 +26,24 @@ export const Department = gql`
     department: departments_by_pk(id: $id) {
       id
       name
-      description
+    }
+  }
+`;
+
+export const CreateDepartment = gql`
+  mutation createDepartments($objects: [departments_insert_input!] = {}) {
+    insert_departments(objects: $objects) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
+export const EditDepartment = gql`
+  mutation editDepartment($id: uuid = "", $data: departments_set_input = {}) {
+    update_departments(where: { id: { _eq: $id } }, _set: $data) {
+      affected_rows
     }
   }
 `;
