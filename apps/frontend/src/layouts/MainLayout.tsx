@@ -9,11 +9,14 @@ import {
   Text,
 } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
+import { useAuth } from '@raftlabs/hbp-react';
 import { ILayoutProvider, PageLoader, useResource } from '@raftlabs/nx-admin';
 import React from 'react';
 
 const MainLayout = ({ children, resources }: ILayoutProvider) => {
   const { name, resourceRoutes, loading } = useResource();
+  const { user, signedIn } = useAuth();
+  console.log(signedIn);
 
   const navStyles: Partial<INavStyles> = {
     root: {
@@ -32,7 +35,7 @@ const MainLayout = ({ children, resources }: ILayoutProvider) => {
       {
         key: 'Admin',
         itemType: ContextualMenuItemType.Header,
-        text: 'Admin',
+        text: user?.display_name,
         itemProps: { lang: 'en-us' },
         iconProps: { iconName: 'Contact' },
       },

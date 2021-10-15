@@ -5,10 +5,8 @@ export const Departments = gql`
     departments {
       id
       name
-      description
       created_at
       updated_at
-      img_url
     }
   }
 `;
