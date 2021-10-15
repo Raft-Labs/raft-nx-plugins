@@ -11,15 +11,12 @@ export const EditButton = ({
   const router = useRouter();
   const { resource } = router.query;
 
-  if (type === 'primary') {
-    return (
-      <PrimaryButton
-        text="Edit"
-        onClick={() => router.push(`/${resource}/${id}/edit`)}
-      />
-    );
-  }
-  return (
+  return type === 'primary' ? (
+    <PrimaryButton
+      text="Edit"
+      onClick={() => router.push(`/${resource}/${id}/edit`)}
+    />
+  ) : (
     <TooltipHost content={tooltip}>
       <IconButton
         iconProps={{ iconName: 'Edit' }}

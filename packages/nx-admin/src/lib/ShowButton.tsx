@@ -11,15 +11,12 @@ export const ShowButton = ({
   const router = useRouter();
   const { resource } = router.query;
 
-  if (type === 'primary') {
-    return (
-      <PrimaryButton
-        text="Show"
-        onClick={() => router.push(`/${resource}/${id}/show`)}
-      />
-    );
-  }
-  return (
+  return type === 'primary' ? (
+    <PrimaryButton
+      text="Show"
+      onClick={() => router.push(`/${resource}/${id}/show`)}
+    />
+  ) : (
     <TooltipHost content={tooltip} id={id}>
       <IconButton
         iconProps={{ iconName: 'RedEye' }}

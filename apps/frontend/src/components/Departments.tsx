@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
 import {
-  CreateButton,
   CreateView,
   EditButton,
   EditView,
@@ -53,9 +52,7 @@ export const DepartmentsList = () => {
           ),
         },
       ]}
-    >
-      <CreateButton />
-    </ListView>
+    />
   );
 };
 

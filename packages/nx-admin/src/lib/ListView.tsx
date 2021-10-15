@@ -8,6 +8,7 @@ import { get } from 'lodash';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useQuery } from 'urql';
+import { CreateButton, Search } from '..';
 import { useResource } from './Admin';
 import { PageLoader } from './PageLoader';
 import { IListView } from './types';
@@ -20,10 +21,11 @@ export const ListView = ({
   queryPath,
   children,
   title,
+  searchProps,
 }: IListView) => {
   const router = useRouter();
   const { resource } = router.query;
-  const { items, setItems } = useResource();
+  const { items, setItems, create } = useResource();
   const [{ data, fetching, error }] = useQuery({
     query,
     variables,
@@ -56,6 +58,14 @@ export const ListView = ({
       >
         {title ? title : resource}
       </Text>
+      <Stack.Item styles={{ root: { paddingBottom: 15 } }}>
+        <Stack verticalFill horizontal horizontalAlign="space-between">
+          <Stack.Item>
+            <Search {...searchProps} />
+          </Stack.Item>
+          <Stack.Item>{create ? <CreateButton /> : null}</Stack.Item>
+        </Stack>
+      </Stack.Item>
       <Stack.Item
         align="stretch"
         styles={{
