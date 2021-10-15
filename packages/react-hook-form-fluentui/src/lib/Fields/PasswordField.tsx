@@ -1,8 +1,5 @@
 import {
-  IStyleFunctionOrObject,
   ITextFieldProps,
-  ITextFieldStyleProps,
-  ITextFieldStyles,
   Label,
   ProgressIndicator,
   Stack,
@@ -15,7 +12,6 @@ import { Controller, UseFormReturn } from 'react-hook-form';
 
 export interface PasswordFieldProps extends ITextFieldProps {
   formHook: UseFormReturn<any>;
-  Styles: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
   name: string;
   strengthMeter?: boolean;
 }
@@ -26,7 +22,6 @@ const specialCharacterRegx = /[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
 
 export const PasswordInputField: FC<PasswordFieldProps> = ({
   formHook,
-  Styles,
   name,
   strengthMeter = false,
   ...props
@@ -79,6 +74,7 @@ export const PasswordInputField: FC<PasswordFieldProps> = ({
 
   useEffect(() => {
     setStrength(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       passwordValidity.typing +
         passwordValidity.minChar +
@@ -120,7 +116,6 @@ export const PasswordInputField: FC<PasswordFieldProps> = ({
             canRevealPassword
             revealPasswordAriaLabel="Show password"
             onFocus={() => setPasswordFocussed(true)}
-            styles={{ root: { width: '250px' } }}
           />
           {strengthMeter && (
             <ProgressIndicator
