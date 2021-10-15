@@ -16,6 +16,7 @@
     "@fluentui/react": "^8.36.0",
     "@fluentui/react-hooks": "^8.3.4",
     "@fluentui/theme": "^2.4.0",
+    "@hookform/resolvers": "^2.8.2",
     "@mdx-js/react": "^1.6.21",
     "@nrwl/devkit": "12.9.0",
     "@nrwl/next": "12.9.0",
@@ -41,7 +42,8 @@
     "rimraf": "^3.0.2",
     "timezones-list": "^3.0.1",
     "tslib": "^2.0.0",
-    "urql": "^2.0.5"
+    "urql": "^2.0.5",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@nrwl/cli": "12.9.0",
