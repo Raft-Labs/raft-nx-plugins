@@ -1,8 +1,10 @@
 import {
+  addDependenciesToPackageJson,
   addProjectConfiguration,
   formatFiles,
   generateFiles,
   getWorkspaceLayout,
+  installPackagesTask,
   names,
   offsetFromRoot,
   Tree,
@@ -26,7 +28,7 @@ function normalizeOptions(
     ? `${names(options.directory).fileName}/${name}`
     : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
+  const projectRoot = `${getWorkspaceLayout(tree).appsDir}/${projectDirectory}`;
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
     : [];
@@ -61,13 +63,24 @@ export default async function (tree: Tree, options: NxAdminGeneratorSchema) {
     root: normalizedOptions.projectRoot,
     projectType: 'library',
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
-    targets: {
-      build: {
-        executor: '@raftlabs/nx-admin:build',
-      },
-    },
     tags: normalizedOptions.parsedTags,
   });
+  await addDependenciesToPackageJson(
+    tree,
+    {
+      '@fluentui/react': '^8.36.5',
+      '@fluentui/react-hooks': '^8.3.4',
+      '@fluentui/theme': '^2.4.1',
+      '@hookform/resolvers': '^2.8.2',
+      urql: '^2.0.5',
+      yup: '^0.32.11',
+      graphql: '^15.6.1',
+      '@raftlabs/hbp-react': '*',
+      '@raftlabs/hbp-sdk': '*',
+    },
+    { '@nrwl/next': '*' }
+  );
+  await installPackagesTask(tree, true);
   addFiles(tree, normalizedOptions);
   await formatFiles(tree);
 }
