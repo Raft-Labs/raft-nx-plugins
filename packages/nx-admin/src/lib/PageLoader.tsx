@@ -1,7 +1,11 @@
-import { Spinner, SpinnerSize, Stack } from '@fluentui/react';
+import { Shimmer, Spinner, SpinnerSize, Stack } from '@fluentui/react';
 import React from 'react';
+import { IPageLoaderProps } from './types';
 
-export const PageLoader = () => {
+export const PageLoader = ({
+  spinner = false,
+  shimmerProps,
+}: IPageLoaderProps) => {
   return (
     <Stack
       styles={{
@@ -13,7 +17,11 @@ export const PageLoader = () => {
       verticalAlign="center"
       horizontalAlign="center"
     >
-      <Spinner size={SpinnerSize.large} />
+      {spinner ? (
+        <Spinner size={SpinnerSize.large} />
+      ) : (
+        <Shimmer {...shimmerProps} />
+      )}
     </Stack>
   );
 };

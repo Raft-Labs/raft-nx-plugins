@@ -1,4 +1,9 @@
-import { IColumn, ISearchBoxProps, PartialTheme } from '@fluentui/react';
+import {
+  IColumn,
+  ISearchBoxProps,
+  IShimmerProps,
+  PartialTheme,
+} from '@fluentui/react';
 import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { OperationContext, OperationResult, TypedDocumentNode } from 'urql';
 export interface IResource {
@@ -79,12 +84,12 @@ export interface IShowView {
 
 export interface IActionButtonWithIdProps {
   id: string;
-  type?: 'icon' | 'primary';
-  tooltip?: string;
+  type?: 'icon' | 'primary' | 'link';
+  title?: string;
 }
 export interface IActionButtonWithoutIdProps {
-  type?: 'icon' | 'primary';
-  tooltip?: string;
+  type?: 'icon' | 'primary' | 'link';
+  title?: string;
 }
 
 export interface ICreateView {
@@ -105,4 +110,9 @@ export interface IEditView {
 
 export interface IDeleteButtonProps extends IActionButtonWithIdProps {
   mutation: string | TypedDocumentNode<any, any>;
+}
+
+export interface IPageLoaderProps {
+  spinner?: boolean;
+  shimmerProps?: IShimmerProps;
 }

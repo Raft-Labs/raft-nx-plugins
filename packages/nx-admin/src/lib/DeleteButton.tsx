@@ -4,6 +4,7 @@ import {
   DialogFooter,
   DialogType,
   IconButton,
+  Link,
   PrimaryButton,
   TooltipHost,
 } from '@fluentui/react';
@@ -15,8 +16,8 @@ import { IDeleteButtonProps } from './types';
 export const DeleteButton = ({
   id,
   type = 'primary',
-  tooltip = 'Delete',
   mutation,
+  title = 'Delete',
 }: IDeleteButtonProps) => {
   const router = useRouter();
   const { resource } = router.query;
@@ -33,10 +34,14 @@ export const DeleteButton = ({
   };
   return (
     <>
-      {type === 'primary' ? (
-        <PrimaryButton text="Delete" onClick={toggleHide} />
+      {type === 'link' ? (
+        <Link onClick={toggleHide} underline>
+          {title}
+        </Link>
+      ) : type === 'primary' ? (
+        <PrimaryButton text={title} onClick={toggleHide} />
       ) : (
-        <TooltipHost content={tooltip}>
+        <TooltipHost content={title}>
           <IconButton iconProps={{ iconName: 'Delete' }} onClick={toggleHide} />
         </TooltipHost>
       )}

@@ -1,6 +1,6 @@
 import {
-  DetailsList,
   DetailsListLayoutMode,
+  ShimmeredDetailsList,
   Stack,
   Text,
 } from '@fluentui/react';
@@ -58,14 +58,6 @@ export const ListView = ({
       >
         {title ? title : resource}
       </Text>
-      <Stack.Item styles={{ root: { paddingBottom: 15 } }}>
-        <Stack verticalFill horizontal horizontalAlign="space-between">
-          <Stack.Item>
-            <Search {...searchProps} />
-          </Stack.Item>
-          <Stack.Item>{create ? <CreateButton /> : null}</Stack.Item>
-        </Stack>
-      </Stack.Item>
       <Stack.Item
         align="stretch"
         styles={{
@@ -76,6 +68,16 @@ export const ListView = ({
       >
         {children ? children : null}
       </Stack.Item>
+
+      <Stack.Item styles={{ root: { paddingBottom: 15 } }}>
+        <Stack verticalFill horizontal horizontalAlign="space-between">
+          <Stack.Item>
+            <Search {...searchProps} />
+          </Stack.Item>
+          <Stack.Item>{create ? <CreateButton /> : null}</Stack.Item>
+        </Stack>
+      </Stack.Item>
+
       <Stack.Item
         align="stretch"
         styles={{
@@ -84,7 +86,7 @@ export const ListView = ({
           },
         }}
       >
-        <DetailsList
+        <ShimmeredDetailsList
           items={items}
           columns={columns}
           setKey="none"

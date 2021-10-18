@@ -68,8 +68,10 @@ export const Admin = ({
     </ThemeProvider>
   );
 };
-
+console.log('here');
 export const useResource = () => {
+  const router = useRouter();
+
   const {
     resource,
     setResource,
@@ -96,6 +98,7 @@ export const useResource = () => {
           iconProps: {
             iconName: resource.icon ? resource?.icon : 'Contact',
           },
+          // onClick: () => router.push(`/${resource?.name}/list`)
         };
       }),
     },

@@ -1,4 +1,4 @@
-import { ListView } from '@raftlabs/nx-admin';
+import { ListView, ShowButton } from '@raftlabs/nx-admin';
 import React from 'react';
 import { Organisations } from './queries';
 
@@ -14,6 +14,9 @@ export const OrganisationsList = () => {
           minWidth: 100,
           maxWidth: 200,
           isResizable: true,
+          onRender: (item) => (
+            <ShowButton id={item.id} title="id" type="link" />
+          ),
         },
         {
           key: 'name',
@@ -32,9 +35,7 @@ export const OrganisationsList = () => {
           onRender: (item) => item?.slug,
         },
       ]}
-    >
-      hello
-    </ListView>
+    />
   );
 };
 
