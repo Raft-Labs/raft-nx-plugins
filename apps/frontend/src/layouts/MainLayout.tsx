@@ -35,7 +35,7 @@ const MainLayout = ({ children, resources }: ILayoutProvider) => {
       {
         key: 'Admin',
         itemType: ContextualMenuItemType.Header,
-        text: user?.display_name,
+        text: user?.display_name || 'Admin',
         itemProps: { lang: 'en-us' },
         iconProps: { iconName: 'Contact' },
       },

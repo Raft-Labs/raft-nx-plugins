@@ -1,4 +1,4 @@
-import { IColumn, PartialTheme } from '@fluentui/react';
+import { IColumn, ISearchBoxProps, PartialTheme } from '@fluentui/react';
 import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { OperationContext, OperationResult, TypedDocumentNode } from 'urql';
 export interface IResource {
@@ -66,6 +66,7 @@ export interface IListView {
   queryPath?: string;
   children?: ReactNode;
   title?: string;
+  searchProps?: ISearchBoxProps;
 }
 export interface IShowView {
   query: TypedDocumentNode<any, any>;
@@ -100,4 +101,8 @@ export interface IEditView {
   title?: string;
   variables?: Record<string, unknown>;
   pause?: boolean;
+}
+
+export interface IDeleteButtonProps extends IActionButtonWithIdProps {
+  mutation: string | TypedDocumentNode<any, any>;
 }

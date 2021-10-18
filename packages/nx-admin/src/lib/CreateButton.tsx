@@ -10,15 +10,12 @@ export const CreateButton = ({
   const router = useRouter();
   const { resource } = router.query;
 
-  if (type === 'primary') {
-    return (
-      <PrimaryButton
-        text="Create"
-        onClick={() => router.push(`/${resource}/create`)}
-      />
-    );
-  }
-  return (
+  return type === 'primary' ? (
+    <PrimaryButton
+      text="Create"
+      onClick={() => router.push(`/${resource}/create`)}
+    />
+  ) : (
     <TooltipHost content={tooltip}>
       <IconButton
         iconProps={{ iconName: 'Add' }}
