@@ -16,8 +16,7 @@ import { auth } from '../helpers/hbp-helper';
 
 const MainLayout = ({ children, resources }: ILayoutProvider) => {
   const { name, resourceRoutes, loading } = useResource();
-  const { user, signedIn } = useAuth();
-  console.log(signedIn);
+  const { user } = useAuth();
 
   const navStyles: Partial<INavStyles> = {
     root: {
