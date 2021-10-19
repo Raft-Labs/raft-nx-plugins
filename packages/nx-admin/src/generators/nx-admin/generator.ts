@@ -1,54 +1,48 @@
 import {
   addDependenciesToPackageJson,
-  addProjectConfiguration,
   formatFiles,
   generateFiles,
+  GeneratorCallback,
   getWorkspaceLayout,
-  installPackagesTask,
   names,
   offsetFromRoot,
   Tree,
+  updateJson,
 } from '@nrwl/devkit';
+import { applicationGenerator } from '@nrwl/next';
+import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 import * as path from 'path';
 import { NxAdminGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends NxAdminGeneratorSchema {
-  projectName: string;
   projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
 }
 
 function normalizeOptions(
   tree: Tree,
   options: NxAdminGeneratorSchema
 ): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).appsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
+  const projectRoot = `${getWorkspaceLayout(tree).appsDir}/${options.name}`;
 
   return {
     ...options,
-    projectName,
     projectRoot,
-    projectDirectory,
-    parsedTags,
   };
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
+  tree.delete(`${options.projectRoot}/pages/_app.tsx`);
+  tree.delete(`${options.projectRoot}/pages/_document.tsx`);
+  tree.delete(`${options.projectRoot}/pages/index.tsx`);
+  tree.rename(`${options.projectRoot}/pages`, `${options.projectRoot}/src`);
+
   const templateOptions = {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     template: '',
   };
+
   generateFiles(
     tree,
     path.join(__dirname, 'files'),
@@ -57,16 +51,16 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 }
 
-export default async function (tree: Tree, options: NxAdminGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(tree, normalizedOptions.projectName, {
-    root: normalizedOptions.projectRoot,
-    projectType: 'library',
-    sourceRoot: `${normalizedOptions.projectRoot}/src`,
-    tags: normalizedOptions.parsedTags,
+function updateDependencies(host: Tree) {
+  updateJson(host, 'package.json', (json) => {
+    if (json.dependencies && json.dependencies['@nrwl/gatsby']) {
+      delete json.dependencies['@nrwl/gatsby'];
+    }
+    return json;
   });
-  await addDependenciesToPackageJson(
-    tree,
+
+  return addDependenciesToPackageJson(
+    host,
     {
       '@fluentui/react': '^8.36.5',
       '@fluentui/react-hooks': '^8.3.4',
@@ -77,10 +71,22 @@ export default async function (tree: Tree, options: NxAdminGeneratorSchema) {
       graphql: '^15.6.1',
       '@raftlabs/hbp-react': '*',
       '@raftlabs/hbp-sdk': '*',
+      '@raftlabs/hasura-react': '*',
     },
-    { '@nrwl/next': '*' }
+    {}
   );
-  await installPackagesTask(tree, true);
+}
+
+export default async function (tree: Tree, options: NxAdminGeneratorSchema) {
+  const normalizedOptions = normalizeOptions(tree, options);
+  const tasks: GeneratorCallback[] = [];
+  const updatePackage = await updateDependencies(tree);
+  tasks.push(updatePackage);
+  const nextTask = await applicationGenerator(tree, {
+    ...options,
+  });
+  tasks.push(nextTask);
   addFiles(tree, normalizedOptions);
   await formatFiles(tree);
+  return runTasksInSerial(...tasks);
 }

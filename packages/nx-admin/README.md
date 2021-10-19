@@ -1,7 +1,7 @@
 # nx-admin
 
-This library was generated with [Nx](https://nx.dev).
+This library depends on `@nrwl/next`.
 
-## Running unit tests
+## Getting started
 
-Run `nx test nx-admin` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx run -g @raftlabs/nx-admin:app`

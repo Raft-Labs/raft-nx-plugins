@@ -6,7 +6,7 @@
     "@nrwl/next"
   ],
   "generators": {
-    "nx-admin": {
+    "app": {
       "factory": "./src/generators/nx-admin/generator",
       "schema": "./src/generators/nx-admin/schema.json",
       "description": "nx-admin generator"

@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/nx-admin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A NextJS Admin build by fluent-UI for Nx Workspace",
   "main": "src/index.js",
   "license": "MIT",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@raftlabs/hbp-react": "*",
+    "@raftlabs/hasura-react": "*",
     "@raftlabs/hbp-sdk": "*",
     "@fluentui/react": "^8.36.5",
     "@fluentui/react-hooks": "^8.3.4",
@@ -37,5 +38,8 @@
     "@hookform/resolvers": "^2.8.2",
     "yup": "^0.32.11",
     "graphql": "^15.6.1"
+  },
+  "peerDependencies": {
+    "@nrwl/next": "*"
   }
 }
