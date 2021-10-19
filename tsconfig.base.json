@@ -21,6 +21,7 @@
       "@raftlabs/hasura-react": ["packages/hasura-react/src/index.ts"],
       "@raftlabs/hbp-react": ["packages/hbp-react/src/index.ts"],
       "@raftlabs/hbp-sdk": ["packages/hbp-sdk/src/index.ts"],
+      "@raftlabs/nx-admin": ["packages/nx-admin/src/index.ts"],
       "@raftlabs/react-hook-form-antd": [
         "packages/react-hook-form-antd/src/index.ts"
       ],

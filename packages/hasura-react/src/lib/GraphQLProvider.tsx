@@ -59,7 +59,7 @@ const createGQLClient = (url: string, auth: Auth) => {
   };
 };
 
-interface GraphQLProviderProps {
+export interface GraphQLProviderProps {
   children: React.ReactNode;
   auth: Auth;
   url: string;

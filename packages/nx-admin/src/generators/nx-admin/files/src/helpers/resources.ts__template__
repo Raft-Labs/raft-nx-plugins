@@ -1,0 +1,2 @@
+import { IResource } from '@raftlabs/nx-admin';
+export const resources: IResource[] = [];
