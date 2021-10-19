@@ -4,4 +4,4 @@ This library depends on `@nrwl/next`.
 
 ## Getting started
 
-Run `nx run -g @raftlabs/nx-admin:app`
+Run `nx g @raftlabs/nx-admin:app`
