@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/nx-admin",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A NextJS Admin build by fluent-UI for Nx Workspace",
   "main": "src/index.js",
   "license": "MIT",
@@ -26,5 +26,12 @@
   "author": {
     "name": "Rahul Retnan",
     "email": "rahul.r4517@gmail.com"
+    },
+  "devDependencies": {
+    "@nrwl/linter": "*",
+    "@nrwl/react": "*"
+  },
+  "peerDependencies": {
+    "@nrwl/next": "*"
   }
 }
