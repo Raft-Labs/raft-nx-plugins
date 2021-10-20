@@ -20,6 +20,7 @@ export default class MyDocument extends Document {
         <Head>
           <style
             type="text/css"
+            // @ts-expect-error
             dangerouslySetInnerHTML={{ __html: this.props.styleTags }}
           />
         </Head>

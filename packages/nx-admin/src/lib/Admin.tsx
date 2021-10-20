@@ -68,7 +68,6 @@ export const Admin = ({
     </ThemeProvider>
   );
 };
-console.log('here');
 export const useResource = () => {
   const router = useRouter();
 

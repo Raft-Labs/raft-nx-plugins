@@ -29,7 +29,8 @@
             "tsConfig": "packages/devkit-extra/tsconfig.lib.json",
             "packageJson": "packages/devkit-extra/package.json",
             "main": "packages/devkit-extra/src/index.ts",
-            "assets": ["packages/devkit-extra/*.md"]
+            "assets": ["packages/devkit-extra/*.md"],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
       }
@@ -74,7 +75,8 @@
                 "input": ".",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
         "lint": {
@@ -144,7 +146,8 @@
                 "glob": "executors.json",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
       }
@@ -263,7 +266,8 @@
                 "input": ".",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
         "lint": {
@@ -296,7 +300,8 @@
                 "input": ".",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
         "lint": {
@@ -329,7 +334,8 @@
                 "input": ".",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
         "lint": {
@@ -391,7 +397,8 @@
                 "glob": "executors.json",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
       }
@@ -460,7 +467,8 @@
                 "glob": "executors.json",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
       }
@@ -500,7 +508,8 @@
                 "input": ".",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
         "lint": {
@@ -535,7 +544,8 @@
                 "input": ".",
                 "output": "."
               }
-            ]
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
         "lint": {

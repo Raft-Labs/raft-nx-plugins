@@ -581,7 +581,7 @@ export default class Auth {
           refresh_token: refreshToken,
         },
       });
-    } catch (error) {
+    } catch (error: any) {
       if (error.response?.status === 401) {
         await this.logout();
         return;
