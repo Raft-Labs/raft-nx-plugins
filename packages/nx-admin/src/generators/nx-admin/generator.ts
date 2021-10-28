@@ -69,9 +69,9 @@ function updateDependencies(host: Tree) {
       urql: '^2.0.5',
       yup: '^0.32.11',
       graphql: '^15.6.1',
-      '@raftlabs/hbp-react': '*',
-      '@raftlabs/hbp-sdk': '*',
-      '@raftlabs/hasura-react': '*',
+      '@raftlabs/hbp-react': 'latest',
+      '@raftlabs/hbp-sdk': 'latest',
+      '@raftlabs/hasura-react': 'latest',
     },
     {}
   );
