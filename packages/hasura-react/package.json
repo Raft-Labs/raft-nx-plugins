@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/hasura-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "nx",
     "nx-plugin",
@@ -10,6 +10,7 @@
     "react-context",
     "react-provider"
   ],
+  "main": "src/index.js",
   "author": {
     "name": "Amal Chandran",
     "email": "amalchandrandev@gmail.com",
