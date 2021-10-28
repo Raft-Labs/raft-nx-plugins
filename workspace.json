@@ -251,23 +251,36 @@
       "projectType": "library",
       "targets": {
         "build": {
-          "executor": "@nrwl/web:package",
+          "executor": "@nrwl/node:package",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/hasura-react",
             "tsConfig": "packages/hasura-react/tsconfig.lib.json",
-            "project": "packages/hasura-react/package.json",
-            "entryFile": "packages/hasura-react/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "packageJson": "packages/hasura-react/package.json",
+            "main": "packages/hasura-react/src/index.ts",
             "assets": [
+              "packages/hasura-react/*.md",
               {
-                "glob": "packages/hasura-react/README.md",
-                "input": ".",
+                "input": "./packages/hasura-react/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/hasura-react/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/hasura-react",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/hasura-react",
+                "glob": "executors.json",
                 "output": "."
               }
-            ],
-            "buildableProjectDepsInPackageJsonType": "dependencies"
+            ]
           }
         },
         "lint": {
