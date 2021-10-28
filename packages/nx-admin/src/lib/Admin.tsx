@@ -92,7 +92,7 @@ export const useResource = () => {
       links: resources.map((resource) => {
         return {
           name: resource?.label,
-          url: `/${resource?.name}/list`,
+          url: `/#/${resource?.name}/list`,
           key: `${resource?.name}`,
           iconProps: {
             iconName: resource.icon ? resource?.icon : 'Contact',

@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/hbp-sdk",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "keywords": [
     "nx",
     "nx-plugin",
@@ -11,6 +11,7 @@
     "react-provider",
     "auth"
   ],
+  "main": "src/index.js",
   "author": {
     "name": "Amal Chandran",
     "email": "amalchandrandev@gmail.com",

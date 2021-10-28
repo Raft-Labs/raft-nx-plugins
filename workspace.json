@@ -319,23 +319,36 @@
       "projectType": "library",
       "targets": {
         "build": {
-          "executor": "@nrwl/web:package",
+          "executor": "@nrwl/node:package",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/hbp-sdk",
             "tsConfig": "packages/hbp-sdk/tsconfig.lib.json",
-            "project": "packages/hbp-sdk/package.json",
-            "entryFile": "packages/hbp-sdk/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "packageJson": "packages/hbp-sdk/package.json",
+            "main": "packages/hbp-sdk/src/index.ts",
             "assets": [
+              "packages/hbp-sdk/*.md",
               {
-                "glob": "packages/hbp-sdk/README.md",
-                "input": ".",
+                "input": "./packages/hbp-sdk/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/hbp-sdk/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/hbp-sdk",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/hbp-sdk",
+                "glob": "executors.json",
                 "output": "."
               }
-            ],
-            "buildableProjectDepsInPackageJsonType": "dependencies"
+            ]
           }
         },
         "lint": {
