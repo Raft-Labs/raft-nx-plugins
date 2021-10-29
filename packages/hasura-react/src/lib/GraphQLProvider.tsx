@@ -15,12 +15,9 @@ const createGQLClient = (url: string, auth: Auth) => {
     url: url.replace('http://', 'ws://').replace('https://', 'wss://'),
     connectionParams: () => {
       const token = auth.getJWTToken();
-      const headers = {};
-      if (token) {
-        headers['authorization'] = `Bearer ${token}`;
-      }
+
       return {
-        headers,
+        headers: token ? { authorization: `Bearer ${token}` } : undefined,
       };
     },
   });
@@ -44,14 +41,8 @@ const createGQLClient = (url: string, auth: Auth) => {
       ],
       fetchOptions: () => {
         const token = auth.getJWTToken();
-
-        const headers = {};
-
-        if (token) {
-          headers['authorization'] = `Bearer ${token}`;
-        }
         return {
-          headers,
+          headers: token ? { authorization: `Bearer ${token}` } : undefined,
         };
       },
     }),

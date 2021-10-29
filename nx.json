@@ -73,6 +73,13 @@
       "tags": [],
       "implicitDependencies": ["nx-hasura"]
     },
+    "react-app": {
+      "tags": []
+    },
+    "react-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-app"]
+    },
     "react-hook-form-antd": {
       "tags": []
     },
