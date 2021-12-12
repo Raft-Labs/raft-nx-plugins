@@ -1,0 +1,45 @@
+{
+  "version": "0.0.4",
+  "name": "@raftlabs/nx-manage",
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc"
+  },
+  "bin": {
+    "nx-manage": "bin/run.js"
+  },
+  "dependencies": {
+    "commander": "^8.3.0",
+    "fast-glob": "^3.2.7",
+    "hasha": "^5.2.2",
+    "joi": "^17.5.0",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "shelljs": "^0.8.4",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/joi": "^17.2.3",
+    "@types/js-yaml": "^4.0.5",
+    "@types/lodash": "^4.14.178",
+    "@types/shelljs": "^0.8.9",
+    "@types/typescript": "^2.0.0"
+  },
+  "author": {
+    "name": "Amal Chandran",
+    "email": "amalchandrandev@gmail.com",
+    "url": "https://amalchandran.me"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raft-Labs/raft-nx-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Raft-Labs/raft-nx-plugins/issues"
+  },
+  "homepage": "https://github.com/Raft-Labs/raft-nx-plugins/tree/main/packages/nx-hasura",
+  "description": "A helper cli for nx workspaces"
+}

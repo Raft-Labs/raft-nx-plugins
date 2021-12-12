@@ -526,6 +526,9 @@
         }
       }
     },
+    "nx-manage": {
+      "root": "packages/nx-manage"
+    },
     "react-app": {
       "root": "apps/react-app",
       "sourceRoot": "apps/react-app/src",

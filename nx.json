@@ -73,6 +73,7 @@
       "tags": [],
       "implicitDependencies": ["nx-hasura"]
     },
+    "nx-manage": {},
     "react-app": {
       "tags": []
     },

@@ -1,0 +1,5 @@
+{
+  "watch": ["scripts/build-affected"],
+  "ext": "ts,json",
+  "exec": "scripts/build-affected/run.ts "
+}

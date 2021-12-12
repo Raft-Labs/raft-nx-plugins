@@ -1,0 +1,7 @@
+import Joi from 'joi';
+
+export const decryptSchema = Joi.object({
+  passphrase: Joi.string().required().label('--passphrase'),
+  environment: Joi.string().required().label('--environment'),
+  cwd: Joi.string().optional().label('--cwd'),
+});

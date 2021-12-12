@@ -1,0 +1,8 @@
+[
+  {
+    "name": "",
+    "docker-compose": "",
+    "passphrase": "",
+    "passphrase": { "type": "env", "variable-name": "PASSPHRASE_PRODUCTION" }
+  }
+]
