@@ -1,5 +1,4 @@
 import shell from 'shelljs';
-import { StringFormat } from '../../../hbp-sdk/src/lib/utils';
 
 export class CommandException extends Error {
   commandSTDException: string;
@@ -11,7 +10,7 @@ export class CommandException extends Error {
 }
 
 export const execCmd = (
-  command: StringFormat,
+  command: string,
   options?: shell.ExecOptions & { async?: false | undefined }
 ) => {
   let commandOut;

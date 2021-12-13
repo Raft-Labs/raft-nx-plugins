@@ -15,6 +15,8 @@ export const prepareAction =
       } else if (exception instanceof CommandException) {
         console.log(exception.message);
         console.log(exception.commandOut);
+      } else {
+        console.log(exception);
       }
     }
   };

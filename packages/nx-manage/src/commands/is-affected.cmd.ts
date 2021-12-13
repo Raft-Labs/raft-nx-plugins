@@ -57,7 +57,7 @@ isAffected
 
         affected = { ...affected, ...serviceMeta };
       }
-
+      console.log('affected', affected);
       if (options?.github) {
         if (has(affected, 'isAffectedApps')) {
           console.log(
