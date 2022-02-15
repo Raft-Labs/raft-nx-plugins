@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/hbp-sdk",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "keywords": [
     "nx",
     "nx-plugin",
@@ -28,7 +28,9 @@
   "homepage": "https://github.com/Raft-Labs/raft-nx-plugins/tree/main/packages/hbp-sdk",
   "description": "Modified version of nhost-js-sdk",
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.24.0"
+  },
+  "peerDependencies": {
     "query-string": "^7.1.0"
   }
 }

@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { AuthUser, AuthUserType } from './AuthUser';
 
-export interface AuthProviderProps {
+interface AuthProviderProps {
   children: React.ReactNode;
   auth: Auth;
 }
@@ -15,18 +15,20 @@ export function AuthProvider({ children, auth }: AuthProviderProps) {
     signedIn: auth.isAuthenticated() || false,
     user: null as AuthUserType,
     loading: true,
+    role: null as string | string[] | null,
   });
 
   useEffect(() => {
     isMounted.current = true;
-    const resetUser = (signedIn: boolean | null) => {
+    const resetUser = (signedIn: any) => {
       const user = auth.getUser();
-
+      const role = auth.getClaim('x-hasura-default-role');
       if (isMounted.current) {
         setAuthState((oldValue) => ({
           ...oldValue,
           user,
           signedIn: signedIn == null ? !isEmpty(user) : signedIn,
+          role,
         }));
       }
     };

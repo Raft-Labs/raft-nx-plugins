@@ -26,70 +26,34 @@
       }
     ]
   },
-  "projects": {
-    "devkit-extra": {
-      "tags": []
-    },
-    "docs": {
-      "tags": []
-    },
-    "firebase-react": {
-      "tags": []
-    },
-    "fluentui-auth": {
-      "tags": []
-    },
-    "fluentui-auth-e2e": {
-      "tags": [],
-      "implicitDependencies": ["fluentui-auth"]
-    },
-    "frontend": {
-      "tags": []
-    },
-    "frontend-e2e": {
-      "tags": [],
-      "implicitDependencies": ["frontend"]
-    },
-    "hasura-react": {
-      "tags": []
-    },
-    "hbp-react": {
-      "tags": []
-    },
-    "hbp-sdk": {
-      "tags": []
-    },
-    "nx-admin": {
-      "tags": []
-    },
-    "nx-admin-e2e": {
-      "tags": [],
-      "implicitDependencies": ["nx-admin"]
-    },
-    "nx-hasura": {
-      "tags": []
-    },
-    "nx-hasura-e2e": {
-      "tags": [],
-      "implicitDependencies": ["nx-hasura"]
-    },
-    "nx-manage": {},
-    "react-app": {
-      "tags": []
-    },
-    "react-app-e2e": {
-      "tags": [],
-      "implicitDependencies": ["react-app"]
-    },
-    "react-hook-form-antd": {
-      "tags": []
-    },
-    "react-hook-form-fluentui": {
-      "tags": []
-    }
-  },
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "packages"
-  }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "frontend"
 }

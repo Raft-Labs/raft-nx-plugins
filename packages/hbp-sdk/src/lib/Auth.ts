@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosRequestHeaders } from 'axios';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import queryString from 'query-string';
@@ -537,8 +537,8 @@ export default class Auth {
     }
   }
 
-  private _generateHeaders(): null | types.Headers {
-    if (this.useCookies) return null;
+  private _generateHeaders(): AxiosRequestHeaders | undefined {
+    if (this.useCookies) return;
 
     return {
       Authorization: `Bearer ${this.currentSession.getSession()?.jwt_token}`,

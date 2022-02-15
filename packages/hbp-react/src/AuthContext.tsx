@@ -7,4 +7,5 @@ export const AuthContext = createContext({
   setUser: (user: any) => {
     console.log(user);
   },
+  role: null as string | string[] | null,
 });

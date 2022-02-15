@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/hbp-react",
-  "version": "0.0.9",
+  "version": "0.1.2",
   "keywords": [
     "nx",
     "nx-plugin",
@@ -29,6 +29,7 @@
   "description": "Provide customised hasura-backend-plus auth module and users context with hasura connection",
   "dependencies": {
     "axios": "^0.24.0",
-    "query-string": "^7.1.0"
+    "query-string": "^7.1.0",
+    "@raftlabs/hbp-sdk": "*"
   }
 }

@@ -33,7 +33,8 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
-      }
+      },
+      "tags": []
     },
     "docs": {
       "projectType": "application",
@@ -52,7 +53,8 @@
             "port": 3000
           }
         }
-      }
+      },
+      "tags": []
     },
     "firebase-react": {
       "root": "packages/firebase-react",
@@ -94,7 +96,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "fluentui-auth": {
       "root": "packages/fluentui-auth",
@@ -150,7 +153,8 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
-      }
+      },
+      "tags": []
     },
     "fluentui-auth-e2e": {
       "root": "apps/fluentui-auth-e2e",
@@ -164,7 +168,9 @@
             "jestConfig": "apps/fluentui-auth-e2e/jest.config.js"
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["fluentui-auth"]
     },
     "frontend": {
       "root": "apps/frontend",
@@ -216,7 +222,8 @@
             "lintFilePatterns": ["apps/frontend/**/*.{ts,tsx,js,jsx}"]
           }
         }
-      }
+      },
+      "tags": []
     },
     "frontend-e2e": {
       "root": "apps/frontend-e2e",
@@ -243,7 +250,9 @@
             "lintFilePatterns": ["apps/frontend-e2e/**/*.{js,ts}"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["frontend"]
     },
     "hasura-react": {
       "root": "packages/hasura-react",
@@ -290,7 +299,8 @@
             "lintFilePatterns": ["packages/hasura-react/**/*.{ts,tsx,js,jsx}"]
           }
         }
-      }
+      },
+      "tags": []
     },
     "hbp-react": {
       "root": "packages/hbp-react",
@@ -337,7 +347,8 @@
             "lintFilePatterns": ["packages/hbp-react/**/*.{ts,tsx,js,jsx}"]
           }
         }
-      }
+      },
+      "tags": []
     },
     "hbp-sdk": {
       "root": "packages/hbp-sdk",
@@ -384,7 +395,8 @@
             "lintFilePatterns": ["packages/hbp-sdk/**/*.{ts,tsx,js,jsx}"]
           }
         }
-      }
+      },
+      "tags": []
     },
     "nx-admin": {
       "root": "packages/nx-admin",
@@ -440,7 +452,8 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
-      }
+      },
+      "tags": []
     },
     "nx-admin-e2e": {
       "root": "apps/nx-admin-e2e",
@@ -454,7 +467,9 @@
             "jestConfig": "apps/nx-admin-e2e/jest.config.js"
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["nx-admin"]
     },
     "nx-hasura": {
       "root": "packages/nx-hasura",
@@ -510,7 +525,8 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         }
-      }
+      },
+      "tags": []
     },
     "nx-hasura-e2e": {
       "root": "apps/nx-hasura-e2e",
@@ -524,7 +540,9 @@
             "jestConfig": "apps/nx-hasura-e2e/jest.config.js"
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["nx-hasura"]
     },
     "nx-manage": {
       "root": "packages/nx-manage"
@@ -605,7 +623,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "react-app-e2e": {
       "root": "apps/react-app-e2e",
@@ -631,7 +650,9 @@
             "lintFilePatterns": ["apps/react-app-e2e/**/*.{js,ts}"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["react-app"]
     },
     "react-hook-form-antd": {
       "root": "packages/react-hook-form-antd",
@@ -667,7 +688,8 @@
             ]
           }
         }
-      }
+      },
+      "tags": []
     },
     "react-hook-form-fluentui": {
       "root": "packages/react-hook-form-fluentui",
@@ -703,33 +725,8 @@
             ]
           }
         }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "style": "css",
-        "linter": "eslint",
-        "babel": true
       },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/next": {
-      "application": {
-        "style": "css",
-        "linter": "eslint"
-      }
+      "tags": []
     }
-  },
-  "defaultProject": "frontend"
+  }
 }
