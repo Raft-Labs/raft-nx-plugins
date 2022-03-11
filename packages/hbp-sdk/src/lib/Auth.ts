@@ -610,7 +610,7 @@ export default class Auth {
   }
 
   private _clearStorage() {
-    localStorage.clear();
+    localStorage.removeItem(this.refreshTokenName || 'refreshToken');
   }
 
   private async _clearSession(): Promise<void> {
