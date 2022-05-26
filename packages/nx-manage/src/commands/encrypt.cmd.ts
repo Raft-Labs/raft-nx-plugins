@@ -53,7 +53,7 @@ encrypt
         }
 
         execCmd(
-          `gpg --passphrase "${options.passphrase}" --quiet --yes --batch -o ${decryptedEnvPath} -d ${fullEnvPath}`
+          `gpg --passphrase "${options.passphrase}" --quiet --yes --batch -o "${decryptedEnvPath}" -d "${fullEnvPath}"`
         );
 
         const hashExisting = await hasha.fromFile(existingFile, {

@@ -39,7 +39,7 @@ decrypt
         const decryptedEnvPath = replace(fullEnvPath, '.gpg', '');
 
         execCmd(
-          `gpg --passphrase "${options.passphrase}" --quiet --yes --batch -o ${decryptedEnvPath} -d ${fullEnvPath}`
+          `gpg --passphrase "${options.passphrase}" --quiet --yes --batch -o "${decryptedEnvPath}" -d "${fullEnvPath}"`
         );
       }
     })
