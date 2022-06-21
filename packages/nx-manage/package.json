@@ -1,5 +1,5 @@
 {
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "@raftlabs/nx-manage",
   "scripts": {
     "dev": "tsc -w",
@@ -14,6 +14,7 @@
   "dependencies": {
     "commander": "^8.3.0",
     "fast-glob": "^3.2.7",
+    "fs-extra": "^10.1.0",
     "hasha": "^5.2.2",
     "joi": "^17.5.0",
     "js-yaml": "^4.1.0",
