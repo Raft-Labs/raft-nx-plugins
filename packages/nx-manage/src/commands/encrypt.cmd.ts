@@ -2,7 +2,7 @@ import { createCommand } from 'commander';
 import fastGlob from 'fast-glob';
 import fs from 'fs-extra';
 import hasha from 'hasha';
-import { get, replace } from 'lodash';
+import { difference, get, replace } from 'lodash';
 import path from 'path';
 import shell from 'shelljs';
 import { execCmd } from '../helpers/exec.helper';
@@ -30,7 +30,26 @@ encrypt
         }
       );
 
-      const changedEnvs = [];
+      let changedEnvs: Array<any> = [];
+
+      const environmentNonEncrypted = fastGlob.sync(
+        [`**/.env.${options.environment}`],
+        {
+          cwd: currentDir,
+          dot: true,
+        }
+      );
+
+      const environmentEncryptedMatcher = environmentNonEncrypted.map(
+        (filePaths: string) => `${filePaths}.gpg`
+      );
+
+      const newEnvironmentNonEncrypted = difference(
+        environmentEncryptedMatcher,
+        environmentEncrypted
+      );
+
+      changedEnvs = changedEnvs.concat(newEnvironmentNonEncrypted);
 
       for (const environmentEncryptedPath of environmentEncrypted) {
         console.log('\nProcessing\n', environmentEncryptedPath);

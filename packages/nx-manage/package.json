@@ -1,5 +1,5 @@
 {
-  "version": "0.0.8",
+  "version": "0.0.9",
   "name": "@raftlabs/nx-manage",
   "scripts": {
     "dev": "tsc -w",
