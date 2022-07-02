@@ -2,6 +2,6 @@ import { createClient } from '@raftlabs/hbp-sdk';
 import { HBP_BASE_URL } from '../configs';
 
 export const { auth, storage } = createClient({
-  ssr: !process.browser,
+  ssr: typeof window === 'undefined',
   baseURL: HBP_BASE_URL,
 });

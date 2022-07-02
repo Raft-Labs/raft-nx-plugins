@@ -1,6 +1,6 @@
 {
   "name": "@raftlabs/nx-admin",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A NextJS Admin build by fluent-UI for Nx Workspace",
   "main": "src/index.js",
   "license": "MIT",

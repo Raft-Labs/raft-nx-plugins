@@ -1,6 +1,5 @@
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
-import { GraphQLProvider } from '@raftlabs/hasura-react';
-import { AuthProvider } from '@raftlabs/hbp-react';
+import { AuthProvider, GraphQLProvider } from '@raftlabs/hbp-react';
 import { Admin } from '@raftlabs/nx-admin';
 import { AppProps } from 'next/app';
 import Head from 'next/head';

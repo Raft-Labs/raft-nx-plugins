@@ -62,16 +62,15 @@ function updateDependencies(host: Tree) {
   return addDependenciesToPackageJson(
     host,
     {
-      '@fluentui/react': '^8.36.5',
-      '@fluentui/react-hooks': '^8.3.4',
-      '@fluentui/theme': '^2.4.1',
-      '@hookform/resolvers': '^2.8.2',
-      urql: '^2.0.5',
+      '@fluentui/react': '^8.77.3',
+      '@fluentui/react-hooks': '^8.6.0',
+      '@fluentui/theme': '^2.6.6',
+      '@hookform/resolvers': '^2.9.3',
+      urql: '^2.2.2',
       yup: '^0.32.11',
-      graphql: '^15.6.1',
-      '@raftlabs/hbp-react': 'latest',
-      '@raftlabs/hbp-sdk': 'latest',
-      '@raftlabs/hasura-react': 'latest',
+      graphql: '^16.5.0',
+      '@raftlabs/hbp-react': '^0.1.4',
+      '@raftlabs/hbp-sdk': '^1.0.6',
     },
     {}
   );
